@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace BusTicketingSystem.Models
 {
-    [Table("users")]
     public class User
     {
 
@@ -25,26 +24,18 @@ namespace BusTicketingSystem.Models
         }
 
 
-        [Column("user_id")]
         public int Id { get; set; }
 
-        [Column("username")]
         public string Username { get; set; } = null!;
 
-        [Column("password")]
         public string PasswordHash { get; set; } = null!;
 
-
-        [Column("name")]
         public string Name { get; set; } = null!;
 
-        [Column("surname")]
         public string Surname { get; set; } = null!;
 
-        [Column("admin")]
         public bool IsAdmin { get; set; }
 
-        [Column("logged_in")]
         public bool IsLoggedIn { get; set; }
     }
 }

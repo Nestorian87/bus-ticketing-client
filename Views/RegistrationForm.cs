@@ -37,11 +37,14 @@ namespace BusTicketingSystem.Views
             );
         }
 
-        public new void Show()
+        public void ShowView()
         {
             context.MainForm = this;
-            base.Show();
+            Show();
         }
+
+        public void CloseView() => Close();
+
 
         private void registerButton_Click(object sender, EventArgs e)
         {

@@ -8,7 +8,7 @@ namespace BusTicketingSystem.Views
 {
     public interface IView
     {
-        void Show();
-        void Close();
+        void ShowView();
+        void CloseView();
     }
 }

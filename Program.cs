@@ -1,9 +1,11 @@
 using BusTicketingSystem.DB;
+using BusTicketingSystem.Models;
 using BusTicketingSystem.Presenter;
 using BusTicketingSystem.Presenters;
 using BusTicketingSystem.Repositories;
 using BusTicketingSystem.View;
 using BusTicketingSystem.Views;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -27,6 +29,9 @@ namespace BusTicketingSystem
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
+            var dbContext = ServiceProvider.GetRequiredService<DatabaseContext>();
+            dbContext.Database.EnsureCreated();
+
             var mainPresenter = ServiceProvider.GetRequiredService<MainPresenter>();
             mainPresenter.Run();
         }
@@ -40,12 +45,17 @@ namespace BusTicketingSystem
                     services.AddSingleton<DatabaseContext>();
                     services.AddTransient<IAuthRepository, AuthRepository>();
                     services.AddTransient<IUserRepository, UserRepository>();
+                    services.AddTransient<IStopsRepository, StopsRepository>();
+                    services.AddTransient<ITripRepository, TripRepository>();
                     services.AddTransient<LoginPresenter>();
                     services.AddTransient<RegistrationPresenter>();
                     services.AddTransient<ILoginView, LoginForm>();
                     services.AddTransient<IRegistrationView, RegistrationForm>();
-                    services.AddTransient<IMainView, MainForm>();
                     services.AddTransient<MainPresenter>();
+                    services.AddTransient<IMainView>(s => s.GetRequiredService<MainForm>());
+                    services.AddScoped<MainForm>();
+                    services.AddTransient<ISearchView>(s => s.GetRequiredService<MainForm>());
+                    services.AddTransient<SearchPresenter>();
                 });
         }
     }

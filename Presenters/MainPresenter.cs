@@ -16,11 +16,13 @@ namespace BusTicketingSystem.Presenters
 
         private readonly IMainView view;
         private readonly IUserRepository userRepository;
+        private readonly SearchPresenter searchPresenter;
 
-        public MainPresenter(IMainView view, IUserRepository userRepository)
+        public MainPresenter(IMainView view, IUserRepository userRepository, SearchPresenter searchPresenter)
         {
             this.view = view;
             this.userRepository = userRepository;
+            this.searchPresenter = searchPresenter;
 
             view.LogoutClicked += (_, _) => Logout();
         }
@@ -32,14 +34,15 @@ namespace BusTicketingSystem.Presenters
                 OpenLogin();
                 return;
             }
-            view.Show();
+            searchPresenter.Run();
+            view.ShowView();
         }
 
         private void OpenLogin()
         {
             var loginPresenter = Program.ServiceProvider.GetRequiredService<LoginPresenter>();
             loginPresenter.Run();
-            view.Close();
+            view.CloseView();
         }
 
         private void Logout()

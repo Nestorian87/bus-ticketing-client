@@ -41,18 +41,20 @@ namespace BusTicketingSystem
             RegistrationClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        public new void Show()
+        public void ShowView()
         {
             bool isRunning = context.MainForm != null;
             context.MainForm = this;
             if (isRunning)
             {
-                base.Show();
+                Show();
             }
             else
             {
                 Application.Run(context);
             }
         }
+
+        public void CloseView() => Close();
     }
 }

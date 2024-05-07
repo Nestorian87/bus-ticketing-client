@@ -24,7 +24,7 @@ namespace BusTicketingSystem.Presenter
 
         public void Run()
         {
-            view.Show();
+            view.ShowView();
         }
 
         private void Register()
@@ -49,14 +49,14 @@ namespace BusTicketingSystem.Presenter
         {
             var loginPresenter = Program.ServiceProvider.GetRequiredService<LoginPresenter>();
             loginPresenter.Run();
-            view.Close();
+            view.CloseView();
         }
 
         private void OpenMainScreen()
         {
             var mainPresenter = Program.ServiceProvider.GetRequiredService<MainPresenter>();
             mainPresenter.Run();
-            view.Close();
+            view.CloseView();
         }
 
         private bool ValidateFields()

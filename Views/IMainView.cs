@@ -7,5 +7,8 @@ namespace BusTicketingSystem.View
 
         public event EventHandler LogoutClicked;
 
+        new void ShowView();
+        new void CloseView();
+
     }
 }
