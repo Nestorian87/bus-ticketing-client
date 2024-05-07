@@ -1,4 +1,5 @@
-﻿using BusTicketingSystem.Repositories;
+﻿using BusTicketingSystem.Models;
+using BusTicketingSystem.Repositories;
 using BusTicketingSystem.Views;
 
 namespace BusTicketingSystem.Presenters
@@ -37,7 +38,13 @@ namespace BusTicketingSystem.Presenters
 
         private void Search()
         {
-            tripBindingSource.DataSource = tripRepository.Find(view.FromStop!, view.ToStop!, view.SearchDate);
+            List<Trip> foundTrips = tripRepository.Find(view.FromStop!, view.ToStop!, view.SearchDate);
+            tripBindingSource.DataSource = foundTrips.Select(t =>
+            {
+                t.StartStop = view.FromStop!;
+                t.EndStop = view.ToStop!;
+                return t;
+            }).ToList();
         }
     }
 }
