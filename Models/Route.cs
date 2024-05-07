@@ -19,7 +19,7 @@ namespace BusTicketingSystem.Models
             set => _stops = value.OrderBy(s => s.Index).ToList();
         }
 
-        public required List<Trip> Trips { get; set; }
+        public List<Trip> Trips { get; set; } = null!;
 
         public string Name => $"{Stops.First().Stop.Name} – {Stops.Last().Stop.Name}";
 

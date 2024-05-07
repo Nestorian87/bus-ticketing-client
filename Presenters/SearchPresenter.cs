@@ -37,7 +37,7 @@ namespace BusTicketingSystem.Presenters
 
         private void Search()
         {
-            tripBindingSource.DataSource = tripRepository.Find();
+            tripBindingSource.DataSource = tripRepository.Find(view.FromStop!, view.ToStop!, view.SearchDate);
         }
     }
 }

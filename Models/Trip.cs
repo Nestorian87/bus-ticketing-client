@@ -22,7 +22,7 @@ namespace BusTicketingSystem.Models
 
         public required Stop EndStop { get; set; }
 
-        public int AvailableSeats => 0;
+        public int AvailableSeats => Bus.Model.SeatsCount;
 
 
         public string Title => Route.Name;

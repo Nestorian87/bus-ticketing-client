@@ -10,6 +10,6 @@ namespace BusTicketingSystem.Repositories
     public interface ITripRepository
     {
 
-        List<Trip> Find();
+        List<Trip> Find(Stop fromStop, Stop toStop, DateTime date);
     }
 }
