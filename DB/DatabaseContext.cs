@@ -20,6 +20,7 @@ namespace BusTicketingSystem.DB
         public DbSet<RouteStop> RouteStops { get; set; } = null!;
         public DbSet<Trip> Trips { get; set; } = null!;
         public DbSet<Stop> Stops { get; set; } = null!;
+        public DbSet<Ticket> Tickets { get; set; } = null!;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

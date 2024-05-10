@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,16 @@ namespace BusTicketingSystem.Models
         public required TimeOnly StartTime { get; set; }
 
         public required List<DayOfWeek> ActiveDaysOfWeek { get; set; }
-        
+
+        [NotMapped]
         public required Stop StartStop { get; set; }
 
+        [NotMapped]
         public required Stop EndStop { get; set; }
 
-        public int AvailableSeats => Bus.Model.SeatsCount;
+        public required List<Ticket> BoughtTickets { get; set; }
+
+        public int AvailableSeats => Bus.Model.SeatsCount - BoughtTickets.Count;
 
 
         public string Title => Route.Name;
@@ -31,7 +36,7 @@ namespace BusTicketingSystem.Models
             .Add(Route.CalculateRideTime(StartStop))
             .Add(Route.GetStayTime(StartStop));
 
-        public TimeOnly EndStopArrivalTime => StartTime.Add(RideTime);
+        public TimeOnly EndStopArrivalTime => StartStopDepartureTime.Add(RideTime);
 
         public string From => StartStop.Description;
 

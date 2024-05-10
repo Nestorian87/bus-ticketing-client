@@ -47,6 +47,7 @@ namespace BusTicketingSystem
                     services.AddTransient<IUserRepository, UserRepository>();
                     services.AddTransient<IStopsRepository, StopsRepository>();
                     services.AddTransient<ITripRepository, TripRepository>();
+                    services.AddTransient<ITicketRepository, TicketRepository>();
                     services.AddTransient<LoginPresenter>();
                     services.AddTransient<RegistrationPresenter>();
                     services.AddTransient<ILoginView, LoginForm>();

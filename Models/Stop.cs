@@ -16,5 +16,7 @@ namespace BusTicketingSystem.Models
 
         public string Description => $"{Name}, {Address}";
 
+        public Stop Copy => new() { Id = Id, Name = Name, Address = Address };
+
     }
 }

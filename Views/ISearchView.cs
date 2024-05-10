@@ -9,16 +9,20 @@ namespace BusTicketingSystem.Views
 {
     public interface ISearchView : IView
     {
-        Stop? FromStop { get; }
-        Stop? ToStop { get; }
+        Stop? FromStop { get; set; }
+        Stop? ToStop { get; set; }
         DateTime SearchDate { set;  get; }
         DateTime MinSearchDate { set; }
         List<Stop> Stops { set; }
+        Trip? SelectedTrip { get; }
+        bool IsTripsNotFoundTextVisible { set; }
 
         event EventHandler TripsSearchClicked;
+        event EventHandler BuyTicketClicked;
 
         void ShowError(string error);
         void SetTripBindingSource(BindingSource source);
+        bool ShowBuyingConfirmation(string message);
         new void ShowView();
         new void CloseView();
     }

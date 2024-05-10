@@ -1,6 +1,8 @@
 using BusTicketingSystem.Models;
 using BusTicketingSystem.View;
 using BusTicketingSystem.Views;
+using System.Data;
+using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
@@ -15,9 +17,20 @@ namespace BusTicketingSystem
             this.context = context;
         }
 
-        public Stop? FromStop => fromComboBox.SelectedItem as Stop;
+        public Stop? FromStop
+        {
+            get => fromComboBox.SelectedItem as Stop;
+            set
+            {
+                fromComboBox.SelectedItem = value;
+            }
+        }
 
-        public Stop? ToStop => toComboBox.SelectedItem as Stop;
+        public Stop? ToStop
+        {
+            get => toComboBox.SelectedItem as Stop;
+            set => toComboBox.SelectedItem = value;
+        }
 
         public DateTime SearchDate
         {
@@ -39,10 +52,24 @@ namespace BusTicketingSystem
             }
         }
 
+        public Trip? SelectedTrip
+        {
+            get
+            {
+                var selectedRows = tripsDataGridView.SelectedRows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    return null;
+                }
+                return selectedRows[0].DataBoundItem as Trip;
+            }
+        }
 
+        public bool IsTripsNotFoundTextVisible { set => tripsNotFoundLabel.Visible = value; }
 
         public event EventHandler? LogoutClicked;
         public event EventHandler? TripsSearchClicked;
+        public event EventHandler? BuyTicketClicked;
 
         public void SetTripBindingSource(BindingSource source)
         {
@@ -60,6 +87,11 @@ namespace BusTicketingSystem
         void ISearchView.ShowView() => searchPanel.Visible = true;
 
         void ISearchView.CloseView() => searchPanel.Visible = false;
+
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            BuyTicketClicked?.Invoke(this, EventArgs.Empty);
+        }
 
         private void searchTripsButton_Click(object sender, EventArgs e)
         {
@@ -105,5 +137,16 @@ namespace BusTicketingSystem
         }
 
         public void CloseView() => Close();
+
+        public bool ShowBuyingConfirmation(string message)
+        {
+            DialogResult result = MessageBox.Show(
+                message,
+                "Підтвердження купівлі",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            return result == DialogResult.Yes;
+        }
     }
 }

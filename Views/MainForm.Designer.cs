@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             panel1 = new Panel();
             label1 = new Label();
@@ -43,8 +46,9 @@
             pictureBox1 = new PictureBox();
             fromComboBox = new ComboBox();
             searchPanel = new Panel();
+            buyButton = new Button();
             panel3 = new Panel();
-            dataGridView1 = new DataGridView();
+            tripsDataGridView = new DataGridView();
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             availableSeatsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -61,11 +65,12 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            tripsNotFoundLabel = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             searchPanel.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tripsDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tripBindingSource).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -108,6 +113,7 @@
             logoutButton.Name = "logoutButton";
             logoutButton.Size = new Size(411, 79);
             logoutButton.TabIndex = 3;
+            logoutButton.TabStop = false;
             logoutButton.Text = " Вийти";
             logoutButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             logoutButton.UseVisualStyleBackColor = true;
@@ -127,6 +133,7 @@
             myTicketsButton.Padding = new Padding(40, 0, 0, 0);
             myTicketsButton.Size = new Size(410, 79);
             myTicketsButton.TabIndex = 2;
+            myTicketsButton.TabStop = false;
             myTicketsButton.Text = " Мої квитки";
             myTicketsButton.TextAlign = ContentAlignment.MiddleLeft;
             myTicketsButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -146,6 +153,7 @@
             searchButton.Padding = new Padding(50, 0, 0, 0);
             searchButton.Size = new Size(408, 79);
             searchButton.TabIndex = 0;
+            searchButton.TabStop = false;
             searchButton.Text = "  Пошук";
             searchButton.TextAlign = ContentAlignment.MiddleLeft;
             searchButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -182,6 +190,7 @@
             // searchPanel
             // 
             searchPanel.BackColor = Color.FromArgb(218, 215, 205);
+            searchPanel.Controls.Add(buyButton);
             searchPanel.Controls.Add(panel3);
             searchPanel.Controls.Add(panel2);
             searchPanel.Dock = DockStyle.Fill;
@@ -191,68 +200,85 @@
             searchPanel.TabIndex = 2;
             searchPanel.Visible = false;
             // 
+            // buyButton
+            // 
+            buyButton.Anchor = AnchorStyles.Bottom;
+            buyButton.BackColor = Color.FromArgb(58, 90, 64);
+            buyButton.FlatAppearance.BorderSize = 0;
+            buyButton.FlatStyle = FlatStyle.Flat;
+            buyButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buyButton.ForeColor = Color.White;
+            buyButton.Location = new Point(1258, 969);
+            buyButton.Name = "buyButton";
+            buyButton.Size = new Size(251, 70);
+            buyButton.TabIndex = 15;
+            buyButton.Text = "Купити";
+            buyButton.UseVisualStyleBackColor = false;
+            buyButton.Click += buyButton_Click;
+            // 
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             panel3.BackColor = Color.FromArgb(218, 215, 205);
-            panel3.Controls.Add(dataGridView1);
+            panel3.Controls.Add(tripsNotFoundLabel);
+            panel3.Controls.Add(tripsDataGridView);
             panel3.Location = new Point(0, 178);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1703, 884);
+            panel3.Size = new Size(1703, 762);
             panel3.TabIndex = 11;
             // 
-            // dataGridView1
+            // tripsDataGridView
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = Color.FromArgb(218, 215, 205);
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, availableSeatsDataGridViewTextBoxColumn, StartStopDepartureTime, endStopArrivalTimeDataGridViewTextBoxColumn, rideTimeDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = tripBindingSource;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.GridColor = Color.FromArgb(218, 215, 205);
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.RowHeadersWidth = 100;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle5.Padding = new Padding(5);
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1703, 884);
-            dataGridView1.TabIndex = 10;
+            tripsDataGridView.AllowUserToAddRows = false;
+            tripsDataGridView.AllowUserToDeleteRows = false;
+            tripsDataGridView.AutoGenerateColumns = false;
+            tripsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            tripsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            tripsDataGridView.BackgroundColor = Color.FromArgb(218, 215, 205);
+            tripsDataGridView.BorderStyle = BorderStyle.None;
+            tripsDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            tripsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            tripsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tripsDataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, availableSeatsDataGridViewTextBoxColumn, StartStopDepartureTime, endStopArrivalTimeDataGridViewTextBoxColumn, rideTimeDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn });
+            tripsDataGridView.DataSource = tripBindingSource;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = Color.White;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            tripsDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
+            tripsDataGridView.Dock = DockStyle.Fill;
+            tripsDataGridView.GridColor = Color.FromArgb(218, 215, 205);
+            tripsDataGridView.Location = new Point(0, 0);
+            tripsDataGridView.MultiSelect = false;
+            tripsDataGridView.Name = "tripsDataGridView";
+            tripsDataGridView.ReadOnly = true;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = SystemColors.Control;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
+            tripsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            tripsDataGridView.RowHeadersWidth = 100;
+            tripsDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle16.Padding = new Padding(5);
+            tripsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            tripsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            tripsDataGridView.Size = new Size(1703, 762);
+            tripsDataGridView.TabIndex = 10;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -284,6 +310,8 @@
             // StartStopDepartureTime
             // 
             StartStopDepartureTime.DataPropertyName = "StartStopDepartureTime";
+            dataGridViewCellStyle10.NullValue = null;
+            StartStopDepartureTime.DefaultCellStyle = dataGridViewCellStyle10;
             StartStopDepartureTime.HeaderText = "Відправлення";
             StartStopDepartureTime.MinimumWidth = 10;
             StartStopDepartureTime.Name = "StartStopDepartureTime";
@@ -293,6 +321,8 @@
             // endStopArrivalTimeDataGridViewTextBoxColumn
             // 
             endStopArrivalTimeDataGridViewTextBoxColumn.DataPropertyName = "EndStopArrivalTime";
+            dataGridViewCellStyle11.NullValue = null;
+            endStopArrivalTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             endStopArrivalTimeDataGridViewTextBoxColumn.HeaderText = "Прибуття";
             endStopArrivalTimeDataGridViewTextBoxColumn.MinimumWidth = 10;
             endStopArrivalTimeDataGridViewTextBoxColumn.Name = "endStopArrivalTimeDataGridViewTextBoxColumn";
@@ -302,6 +332,8 @@
             // rideTimeDataGridViewTextBoxColumn
             // 
             rideTimeDataGridViewTextBoxColumn.DataPropertyName = "RideTime";
+            dataGridViewCellStyle12.NullValue = null;
+            rideTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             rideTimeDataGridViewTextBoxColumn.HeaderText = "Час в дорозі";
             rideTimeDataGridViewTextBoxColumn.MinimumWidth = 10;
             rideTimeDataGridViewTextBoxColumn.Name = "rideTimeDataGridViewTextBoxColumn";
@@ -311,9 +343,9 @@
             // priceDataGridViewTextBoxColumn
             // 
             priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            dataGridViewCellStyle2.Format = "C0";
-            dataGridViewCellStyle2.NullValue = null;
-            priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle13.Format = "C0";
+            dataGridViewCellStyle13.NullValue = null;
+            priceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             priceDataGridViewTextBoxColumn.HeaderText = "Ціна";
             priceDataGridViewTextBoxColumn.MinimumWidth = 10;
             priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
@@ -432,6 +464,19 @@
             label2.TabIndex = 8;
             label2.Text = "Звідки";
             // 
+            // tripsNotFoundLabel
+            // 
+            tripsNotFoundLabel.Anchor = AnchorStyles.None;
+            tripsNotFoundLabel.AutoSize = true;
+            tripsNotFoundLabel.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tripsNotFoundLabel.Location = new Point(658, 354);
+            tripsNotFoundLabel.Name = "tripsNotFoundLabel";
+            tripsNotFoundLabel.Size = new Size(391, 62);
+            tripsNotFoundLabel.TabIndex = 11;
+            tripsNotFoundLabel.Text = "Рейсів не знайдено";
+            tripsNotFoundLabel.UseCompatibleTextRendering = true;
+            tripsNotFoundLabel.Visible = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -449,7 +494,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             searchPanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tripsDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)tripBindingSource).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -473,11 +519,12 @@
         private Label label4;
         private DateTimePicker datePicker;
         private Label label5;
-        private DataGridView dataGridView1;
+        private DataGridView tripsDataGridView;
         private BindingSource tripBindingSource;
         private DataGridViewTextBoxColumn startStopArrivalTimeDataGridViewTextBoxColumn;
         private Button searchTripsButton;
         private Panel panel3;
+        private Button buyButton;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn availableSeatsDataGridViewTextBoxColumn;
@@ -485,5 +532,6 @@
         private DataGridViewTextBoxColumn endStopArrivalTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn rideTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private Label tripsNotFoundLabel;
     }
 }
