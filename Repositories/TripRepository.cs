@@ -45,7 +45,7 @@ namespace BusTicketingSystem.Repositories
                     return trip;
                 })
                 .Where(t => t.AvailableSeats > 0)
-                .Where(t => t.StartStopDepartureTime > TimeOnly.FromDateTime(DateTime.Now))
+                .Where(t => date != DateTime.Today || t.StartStopDepartureTime > TimeOnly.FromDateTime(DateTime.Now))
                 .OrderBy(t => t.StartStopDepartureTime)
                 .ToList();
         }
