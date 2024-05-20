@@ -12,6 +12,6 @@ namespace BusTicketingSystem.Repositories
         void BuyTicket(int tripId, int startStopId, int endStopId, DateTime date);
 
         List<Ticket> GetActiveTickets();
-
+        void ReturnTicket(int id);
     }
 }

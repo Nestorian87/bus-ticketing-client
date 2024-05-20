@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
-    public partial class MainForm : Form, IMainView, ISearchView
+    public partial class MainForm : Form, IMainView, ISearchView, ITicketsView
     {
 
         private ApplicationContext context;
@@ -15,6 +15,7 @@ namespace BusTicketingSystem
         {
             InitializeComponent();
             this.context = context;
+            HideTabs();
         }
 
         public Stop? FromStop
@@ -67,9 +68,26 @@ namespace BusTicketingSystem
 
         public bool IsTripsNotFoundTextVisible { set => tripsNotFoundLabel.Visible = value; }
 
+        public Ticket? SelectedTicket
+        {
+            get
+            {
+                var selectedRows = boughtTicketsDataGridView.SelectedRows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    return null;
+                }
+                return selectedRows[0].DataBoundItem as Ticket;
+            }
+        }
+
         public event EventHandler? LogoutClicked;
         public event EventHandler? TripsSearchClicked;
         public event EventHandler? BuyTicketClicked;
+        public event EventHandler? SearchTripsClicked;
+        public event EventHandler? MyTicketsClicked;
+        public event EventHandler? SaveTicketClicked;
+        public event EventHandler? ReturnTicketClicked;
 
         public void SetTripBindingSource(BindingSource source)
         {
@@ -84,9 +102,13 @@ namespace BusTicketingSystem
             comboBox.DisplayMember = "Name";
         }
 
-        void ISearchView.ShowView() => searchPanel.Visible = true;
+        void ISearchView.ShowView() => tabControl.SelectedTab = searchTabPage;
 
-        void ISearchView.CloseView() => searchPanel.Visible = false;
+        void ISearchView.CloseView() { }
+
+        void ITicketsView.ShowView() => tabControl.SelectedTab = myTicketsTabPage;
+
+        void ITicketsView.CloseView() { }
 
         private void buyButton_Click(object sender, EventArgs e)
         {
@@ -142,11 +164,64 @@ namespace BusTicketingSystem
         {
             DialogResult result = MessageBox.Show(
                 message,
-                "Підтвердження купівлі",
+                "Підтвердження дії",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
             return result == DialogResult.Yes;
+        }
+
+        private void HideTabs()
+        {
+            tabControl.Appearance = TabAppearance.FlatButtons;
+            tabControl.ItemSize = new Size(0, 1);
+            tabControl.SizeMode = TabSizeMode.Fixed;
+        }
+
+        public void SetTicketBindingSource(BindingSource source)
+        {
+            ticketBindingSource.DataSource = source;
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            SearchTripsClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void myTicketsButton_Click(object sender, EventArgs e)
+        {
+            MyTicketsClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void returnTicketButton_Click(object sender, EventArgs e)
+        {
+            ReturnTicketClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void saveTicketButton_Click(object sender, EventArgs e)
+        {
+            SaveTicketClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public bool ShowReturnTicketConfirmation(string message)
+        {
+            DialogResult result = MessageBox.Show(
+                message,
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            return result == DialogResult.Yes;
+        }
+
+        public string RequestTicketSavingPath()
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Файл pdf|*.pdf";
+            dialog.Title = "Завантаження квитка";
+            dialog.FileName = "Квиток";
+            dialog.ShowDialog();
+            return dialog.FileName;
         }
     }
 }

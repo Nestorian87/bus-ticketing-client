@@ -32,5 +32,19 @@ namespace BusTicketingSystem.Models
         public Ticket()
         {
         }
+
+        public String From => StartStop.Stop.Name;
+
+        public String To => EndStop.Stop.Name;
+
+        public int TripNumber => Trip.Id;
+
+        public double Price => Trip.Price;
+
+        public TimeOnly DepartureTime => Trip.StartStopDepartureTime;
+
+        public TimeOnly ArrivalTime => Trip.EndStopArrivalTime;
+
+
     }
 }

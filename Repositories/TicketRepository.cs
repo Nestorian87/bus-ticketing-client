@@ -46,7 +46,24 @@ namespace BusTicketingSystem.Repositories
                 .Include(t => t.Trip).ThenInclude(tr => tr.Bus).ThenInclude(b => b.Model)
                 .Include(t => t.StartStop)
                 .Include(t => t.EndStop)
+                .OrderBy(t => t.Date)
+                .ToList()
+                .Select(t =>
+                {
+                    t.Trip.StartStop = t.StartStop.Stop;
+                    t.Trip.EndStop = t.EndStop.Stop;
+                    return t;
+                })
                 .ToList();
+        }
+
+        public void ReturnTicket(int id)
+        {
+            Ticket ticket = dbContext.Tickets.FirstOrDefault(t => t.Id == id)
+                ?? throw new ArgumentException("Wrong ticket id");
+            
+            dbContext.Remove(ticket);
+            dbContext.SaveChanges();
         }
     }
 }

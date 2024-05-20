@@ -18,13 +18,15 @@ namespace BusTicketingSystem.Presenters
         private readonly IUserRepository userRepository;
         private readonly SearchPresenter searchPresenter;
 
-        public MainPresenter(IMainView view, IUserRepository userRepository, SearchPresenter searchPresenter)
+        public MainPresenter(IMainView view, IUserRepository userRepository, SearchPresenter searchPresenter, TicketsPresenter ticketsPresenter)
         {
             this.view = view;
             this.userRepository = userRepository;
             this.searchPresenter = searchPresenter;
 
             view.LogoutClicked += (_, _) => Logout();
+            view.SearchTripsClicked += (_, _) => searchPresenter.Run();
+            view.MyTicketsClicked += (_, _) => ticketsPresenter.Run();
         }
 
         public void Run()

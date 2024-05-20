@@ -57,6 +57,8 @@ namespace BusTicketingSystem
                     services.AddScoped<MainForm>();
                     services.AddTransient<ISearchView>(s => s.GetRequiredService<MainForm>());
                     services.AddTransient<SearchPresenter>();
+                    services.AddTransient<ITicketsView>(s => s.GetRequiredService<MainForm>());
+                    services.AddTransient<TicketsPresenter>();
                 });
         }
     }
