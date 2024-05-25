@@ -53,7 +53,7 @@ namespace BusTicketingSystem
                     services.AddTransient<RegistrationPresenter>();
                     services.AddTransient<ILoginView, LoginForm>();
                     services.AddTransient<IRegistrationView, RegistrationForm>();
-                    services.AddTransient<MainPresenter>();
+                    services.AddSingleton<MainPresenter>();
                     services.AddTransient<IMainView>(s => s.GetRequiredService<MainForm>());
                     services.AddScoped<MainForm>();
                     services.AddTransient<ISearchView>(s => s.GetRequiredService<MainForm>());
