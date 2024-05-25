@@ -1,4 +1,5 @@
-﻿using BusTicketingSystem.Presenter;
+﻿using BusTicketingSystem.Models;
+using BusTicketingSystem.Presenter;
 using BusTicketingSystem.Repositories;
 using BusTicketingSystem.View;
 using BusTicketingSystem.Views;
@@ -30,19 +31,19 @@ namespace BusTicketingSystem.Presenters
             view.SearchTripsClicked += (_, _) => searchPresenter.Run();
             view.MyTicketsClicked += (_, _) => ticketsPresenter.Run();
             view.ModelsClicked += (_, _) => modelsPresenter.Run();
-            
-
-            view.ChangeAdminControlsVisibility(userRepository.GetCurrentUser()?.IsAdmin == true);
         }
 
         public void Run()
         {
-            if (userRepository.GetCurrentUser() == null)
+            User? currentUser = userRepository.GetCurrentUser();
+            if (currentUser == null)
             {
                 OpenLogin();
                 return;
             }
             searchPresenter.Run();
+
+            view.ChangeAdminControlsVisibility(currentUser.IsAdmin);
             view.ShowView();
         }
 
