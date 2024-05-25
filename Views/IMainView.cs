@@ -8,9 +8,11 @@ namespace BusTicketingSystem.View
         public event EventHandler LogoutClicked;
         public event EventHandler SearchTripsClicked;
         public event EventHandler MyTicketsClicked;
+        public event EventHandler ModelsClicked;
 
         new void ShowView();
         new void CloseView();
+        void ChangeAdminControlsVisibility(bool isVisible);
 
     }
 }

@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace BusTicketingSystem.Views
 {
-    public interface ITicketsView : IView
+    public interface IModelsView : IView
     {
-        Ticket? SelectedTicket { get; }
+        BusModel? SelectedModel { get; }
 
-        event EventHandler SaveTicketClicked;
-        event EventHandler ReturnTicketClicked;
+        event EventHandler AddModelClicked;
+        event EventHandler EditModelClicked;
+        event EventHandler DeleteModelClicked;
 
         void ShowError(string error);
-        void SetTicketBindingSource(BindingSource source);
+        void SetModelsBindingSource(BindingSource source);
         new void ShowView();
         new void CloseView();
         bool ShowConfirmation(string message);
-        string RequestTicketSavingPath();
     }
 }
-

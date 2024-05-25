@@ -51,7 +51,7 @@ namespace BusTicketingSystem.Presenters
             }
 
             string confirmationMessage = $"Ви точно хочете повернути квиток {selectedTicket.StartStop.Stop.Name} – {selectedTicket.EndStop.Stop.Name} на {selectedTicket.Date.ToLongDateString()} {selectedTicket.DepartureTime.ToShortTimeString()}?";
-            if (view.ShowReturnTicketConfirmation(confirmationMessage))
+            if (view.ShowConfirmation(confirmationMessage))
             {
                 ticketRepository.ReturnTicket(selectedTicket.Id);
                 ShowTickets();

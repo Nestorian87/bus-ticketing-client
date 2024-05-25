@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
-    public partial class MainForm : Form, IMainView, ISearchView, ITicketsView
+    public partial class MainForm : Form, IMainView, ISearchView, ITicketsView, IModelsView
     {
 
         private ApplicationContext context;
@@ -81,6 +81,19 @@ namespace BusTicketingSystem
             }
         }
 
+        public BusModel? SelectedModel
+        {
+            get
+            {
+                var selectedRows = modelsDataGridView.SelectedRows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    return null;
+                }
+                return selectedRows[0].DataBoundItem as BusModel;
+            }
+        }
+
         public event EventHandler? LogoutClicked;
         public event EventHandler? TripsSearchClicked;
         public event EventHandler? BuyTicketClicked;
@@ -88,6 +101,10 @@ namespace BusTicketingSystem
         public event EventHandler? MyTicketsClicked;
         public event EventHandler? SaveTicketClicked;
         public event EventHandler? ReturnTicketClicked;
+        public event EventHandler? AddModelClicked;
+        public event EventHandler? EditModelClicked;
+        public event EventHandler? DeleteModelClicked;
+        public event EventHandler? ModelsClicked;
 
         public void SetTripBindingSource(BindingSource source)
         {
@@ -109,6 +126,10 @@ namespace BusTicketingSystem
         void ITicketsView.ShowView() => tabControl.SelectedTab = myTicketsTabPage;
 
         void ITicketsView.CloseView() { }
+
+        void IModelsView.ShowView() => tabControl.SelectedTab = modelsTabPage;
+
+        void IModelsView.CloseView() { }
 
         private void buyButton_Click(object sender, EventArgs e)
         {
@@ -158,7 +179,7 @@ namespace BusTicketingSystem
             }
         }
 
-        public void CloseView() => Close();
+        public void CloseView() => Hide();
 
         public bool ShowBuyingConfirmation(string message)
         {
@@ -203,7 +224,7 @@ namespace BusTicketingSystem
             SaveTicketClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        public bool ShowReturnTicketConfirmation(string message)
+        public bool ShowConfirmation(string message)
         {
             DialogResult result = MessageBox.Show(
                 message,
@@ -222,6 +243,36 @@ namespace BusTicketingSystem
             dialog.FileName = " виток";
             dialog.ShowDialog();
             return dialog.FileName;
+        }
+
+        public void ChangeAdminControlsVisibility(bool isVisible)
+        {
+            menuStrip.Visible = isVisible;
+        }
+
+        public void SetModelsBindingSource(BindingSource source)
+        {
+            busModelBindingSource.DataSource = source;
+        }
+
+        private void modelsMenuItem_Click(object sender, EventArgs e)
+        {
+            ModelsClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void addModelButton_Click(object sender, EventArgs e)
+        {
+            AddModelClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void editModelButton_Click(object sender, EventArgs e)
+        {
+            EditModelClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void deleteModelButton_Click(object sender, EventArgs e)
+        {
+            DeleteModelClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

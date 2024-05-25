@@ -5,6 +5,7 @@ using BusTicketingSystem.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Interop;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,15 +19,20 @@ namespace BusTicketingSystem.Presenters
         private readonly IUserRepository userRepository;
         private readonly SearchPresenter searchPresenter;
 
-        public MainPresenter(IMainView view, IUserRepository userRepository, SearchPresenter searchPresenter, TicketsPresenter ticketsPresenter)
+        public MainPresenter(IMainView view, IUserRepository userRepository, SearchPresenter searchPresenter, TicketsPresenter ticketsPresenter, ModelsPresenter modelsPresenter)
         {
             this.view = view;
             this.userRepository = userRepository;
             this.searchPresenter = searchPresenter;
 
+
             view.LogoutClicked += (_, _) => Logout();
             view.SearchTripsClicked += (_, _) => searchPresenter.Run();
             view.MyTicketsClicked += (_, _) => ticketsPresenter.Run();
+            view.ModelsClicked += (_, _) => modelsPresenter.Run();
+            
+
+            view.ChangeAdminControlsVisibility(userRepository.GetCurrentUser()?.IsAdmin == true);
         }
 
         public void Run()

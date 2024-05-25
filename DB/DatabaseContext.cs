@@ -15,6 +15,7 @@ namespace BusTicketingSystem.DB
         private const string DB_FILE_NAME = "db.sqlite";
 
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<BusModel> BusModels { get; set; } = null!;
         public DbSet<Bus> Buses { get; set; } = null!;
         public DbSet<Route> Routes { get; set; } = null!;
         public DbSet<RouteStop> RouteStops { get; set; } = null!;

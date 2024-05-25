@@ -13,5 +13,12 @@ namespace BusTicketingSystem.Models
         public required string Name { get; set; }
 
         public int SeatsCount { get; set; }
+
+        public void CopyFrom(BusModel other)
+        { 
+            Id = other.Id;
+            Name = other.Name;
+            SeatsCount = other.SeatsCount;
+        }
     }
 }
