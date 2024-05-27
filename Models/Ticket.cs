@@ -20,6 +20,8 @@ namespace BusTicketingSystem.Models
 
         public RouteStop EndStop { get; set; }
 
+        public double Price { get; set; }
+
         public Ticket(User user, Trip trip, DateOnly date, RouteStop startStop, RouteStop endStop)
         {
             User = user;
@@ -27,6 +29,7 @@ namespace BusTicketingSystem.Models
             Date = date;
             StartStop = startStop;
             EndStop = endStop;
+            Price = trip.Price;
         }
 
         public Ticket()
@@ -38,8 +41,6 @@ namespace BusTicketingSystem.Models
         public String To => EndStop.Stop.Name;
 
         public int TripNumber => Trip.Id;
-
-        public double Price => Trip.Price;
 
         public TimeOnly DepartureTime => Trip.StartStopDepartureTime;
 
