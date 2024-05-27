@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             panel1 = new Panel();
             panel3 = new Panel();
             pictureBox1 = new PictureBox();
@@ -277,6 +278,7 @@
             ClientSize = new Size(1129, 790);
             Controls.Add(panel1);
             Controls.Add(panel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1155, 861);
             Name = "RegistrationForm";
             StartPosition = FormStartPosition.CenterScreen;

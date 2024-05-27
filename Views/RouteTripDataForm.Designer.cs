@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RouteTripDataForm));
             label5 = new Label();
             label1 = new Label();
             busComboBox = new ComboBox();
@@ -177,6 +178,7 @@
             Controls.Add(label3);
             Controls.Add(cancelButton);
             Controls.Add(saveButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(826, 773);
             Name = "RouteTripDataForm";
             Text = "Рейс";

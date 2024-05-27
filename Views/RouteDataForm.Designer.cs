@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RouteDataForm));
             priceNumericUpDown = new NumericUpDown();
             cancelButton = new Button();
             saveButton = new Button();
@@ -138,6 +139,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(titleTextBox);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(809, 330);
             Name = "RouteDataForm";
             Text = "Маршрут";

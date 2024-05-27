@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusDataForm));
             modelComboBox = new ComboBox();
             busModelBindingSource = new BindingSource(components);
             label3 = new Label();
@@ -146,6 +147,7 @@
             Controls.Add(saveButton);
             Controls.Add(modelComboBox);
             Controls.Add(label3);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(763, 336);
             Name = "BusDataForm";
             Text = "Автобус";

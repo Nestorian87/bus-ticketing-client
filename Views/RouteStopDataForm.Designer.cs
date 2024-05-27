@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RouteStopDataForm));
             cancelButton = new Button();
             saveButton = new Button();
             label3 = new Label();
@@ -239,9 +240,10 @@
             Controls.Add(label3);
             Controls.Add(cancelButton);
             Controls.Add(saveButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(826, 521);
             Name = "RouteStopDataForm";
-            Text = "RouteStopDataForm";
+            Text = "Зупинка маршруту";
             ((System.ComponentModel.ISupportInitialize)stopDataBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)rideTimeHoursNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)rideTimeMinutesNumericUpDown).EndInit();

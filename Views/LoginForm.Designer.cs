@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             panel1 = new Panel();
             panel3 = new Panel();
             pictureBox1 = new PictureBox();
@@ -211,6 +212,7 @@
             ClientSize = new Size(1129, 671);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1155, 742);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;

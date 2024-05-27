@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelDataForm));
             saveButton = new Button();
             label4 = new Label();
             label3 = new Label();
@@ -137,6 +138,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(nameTextBox);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(826, 348);
             Name = "ModelDataForm";
             Text = "Модель";
