@@ -21,7 +21,7 @@ namespace BusTicketingSystem.Views
         }
 
         public TimeOnly StartTime {
-            get => TimeOnly.FromDateTime(startTimePicker.Value);
+            get => new TimeOnly(startTimePicker.Value.Hour, startTimePicker.Value.Minute);
             set => startTimePicker.Value = DateTime.Today + value.ToTimeSpan();
         }
 

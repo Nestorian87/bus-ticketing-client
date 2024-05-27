@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusTicketingSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,24 +11,20 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem.Views
 {
-    public partial class ModelDataForm : Form, IModelDataView
+    public partial class BusDataForm : Form, IBusDataView
     {
-        public ModelDataForm()
+        public BusModel? Model { 
+            get => modelComboBox.SelectedItem as BusModel;
+            set => modelComboBox.SelectedItem = value;
+        }
+        public string Number {
+            get => numberMaskedTextBox.Text.Trim().ToUpper();
+            set => numberMaskedTextBox.Text = value;
+        }
+
+        public BusDataForm()
         {
             InitializeComponent();
-        }
-
-        public string ModelName
-        {
-            get => nameTextBox.Text.Trim();
-            set => nameTextBox.Text = value;
-        }
-
-        public int? SeatsCount
-        {
-            get => string.IsNullOrEmpty(seatsCountNumericUpDown.Text) ?
-                null : (int) seatsCountNumericUpDown.Value;
-            set => seatsCountNumericUpDown.Text = value?.ToString() ?? "";
         }
 
         public event EventHandler? SaveClicked;
@@ -51,6 +48,11 @@ namespace BusTicketingSystem.Views
                 buttons: MessageBoxButtons.OK,
                 icon: MessageBoxIcon.Error
             );
+        }
+
+        public void SetModelBindingSource(BindingSource source)
+        {
+            busModelBindingSource.DataSource = source;
         }
     }
 }

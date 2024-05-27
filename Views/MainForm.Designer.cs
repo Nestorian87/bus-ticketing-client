@@ -55,6 +55,10 @@
             DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             panel1 = new Panel();
             label1 = new Label();
@@ -113,6 +117,10 @@
             deleteTripButton = new Button();
             editTripButton = new Button();
             routeTripsDataGridView = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            startTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            BusInfo = new DataGridViewTextBoxColumn();
+            ActiveDaysOfWeekString = new DataGridViewTextBoxColumn();
             routeTripBindingSource = new BindingSource(components);
             groupBox2 = new GroupBox();
             moveRouteStopToBottomButton = new Button();
@@ -133,6 +141,14 @@
             AddRouteButton = new Button();
             deleteRouteButton = new Button();
             editRouteButton = new Button();
+            busesTabPage = new TabPage();
+            addBusButton = new Button();
+            deleteBusButton = new Button();
+            editBusButton = new Button();
+            busesDataGridView = new DataGridView();
+            numberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ModelName = new DataGridViewTextBoxColumn();
+            busBindingSource = new BindingSource(components);
             panel4 = new Panel();
             menuStrip = new MenuStrip();
             адмінітраторToolStripMenuItem = new ToolStripMenuItem();
@@ -141,10 +157,6 @@
             busesMenuItem = new ToolStripMenuItem();
             routesMenuItem = new ToolStripMenuItem();
             stopsMenuItem = new ToolStripMenuItem();
-            Column1 = new DataGridViewTextBoxColumn();
-            startTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            BusInfo = new DataGridViewTextBoxColumn();
-            ActiveDaysOfWeekString = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             searchPanel.SuspendLayout();
@@ -171,6 +183,9 @@
             ((System.ComponentModel.ISupportInitialize)routesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).BeginInit();
             groupBox1.SuspendLayout();
+            busesTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)busesDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
             panel4.SuspendLayout();
             menuStrip.SuspendLayout();
             SuspendLayout();
@@ -581,6 +596,7 @@
             tabControl.Controls.Add(myTicketsTabPage);
             tabControl.Controls.Add(modelsTabPage);
             tabControl.Controls.Add(routesTabPage);
+            tabControl.Controls.Add(busesTabPage);
             tabControl.Location = new Point(400, -10);
             tabControl.Margin = new Padding(0);
             tabControl.Name = "tabControl";
@@ -887,11 +903,11 @@
             // dataGridViewTextBoxColumn5
             // 
             dataGridViewTextBoxColumn5.DataPropertyName = "Name";
-            dataGridViewTextBoxColumn5.HeaderText = "Назва";
+            dataGridViewTextBoxColumn5.HeaderText = "Модель";
             dataGridViewTextBoxColumn5.MinimumWidth = 10;
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Width = 156;
+            dataGridViewTextBoxColumn5.Width = 185;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -920,8 +936,8 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40.52632F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 59.4736824F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.6869278F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 61.3130722F));
             tableLayoutPanel1.Controls.Add(groupBox3, 0, 3);
             tableLayoutPanel1.Controls.Add(routeTripsDataGridView, 1, 2);
             tableLayoutPanel1.Controls.Add(groupBox2, 1, 1);
@@ -945,9 +961,9 @@
             groupBox3.Controls.Add(deleteTripButton);
             groupBox3.Controls.Add(editTripButton);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(619, 896);
+            groupBox3.Location = new Point(591, 896);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(898, 70);
+            groupBox3.Size = new Size(926, 70);
             groupBox3.TabIndex = 27;
             groupBox3.TabStop = false;
             // 
@@ -959,7 +975,7 @@
             AddTripButton.FlatStyle = FlatStyle.Flat;
             AddTripButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddTripButton.ForeColor = Color.White;
-            AddTripButton.Location = new Point(541, 11);
+            AddTripButton.Location = new Point(555, 11);
             AddTripButton.Name = "AddTripButton";
             AddTripButton.Size = new Size(161, 48);
             AddTripButton.TabIndex = 25;
@@ -975,7 +991,7 @@
             deleteTripButton.FlatStyle = FlatStyle.Flat;
             deleteTripButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             deleteTripButton.ForeColor = Color.White;
-            deleteTripButton.Location = new Point(196, 11);
+            deleteTripButton.Location = new Point(210, 11);
             deleteTripButton.Name = "deleteTripButton";
             deleteTripButton.Size = new Size(146, 48);
             deleteTripButton.TabIndex = 24;
@@ -991,7 +1007,7 @@
             editTripButton.FlatStyle = FlatStyle.Flat;
             editTripButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             editTripButton.ForeColor = Color.White;
-            editTripButton.Location = new Point(348, 11);
+            editTripButton.Location = new Point(362, 11);
             editTripButton.Name = "editTripButton";
             editTripButton.Size = new Size(187, 48);
             editTripButton.TabIndex = 23;
@@ -1029,7 +1045,7 @@
             routeTripsDataGridView.DefaultCellStyle = dataGridViewCellStyle16;
             routeTripsDataGridView.Dock = DockStyle.Fill;
             routeTripsDataGridView.GridColor = Color.FromArgb(218, 215, 205);
-            routeTripsDataGridView.Location = new Point(619, 489);
+            routeTripsDataGridView.Location = new Point(591, 489);
             routeTripsDataGridView.MultiSelect = false;
             routeTripsDataGridView.Name = "routeTripsDataGridView";
             routeTripsDataGridView.ReadOnly = true;
@@ -1048,8 +1064,44 @@
             dataGridViewCellStyle18.Padding = new Padding(5);
             routeTripsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle18;
             routeTripsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            routeTripsDataGridView.Size = new Size(898, 401);
+            routeTripsDataGridView.Size = new Size(926, 401);
             routeTripsDataGridView.TabIndex = 26;
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "Id";
+            Column1.HeaderText = "Рейс";
+            Column1.MinimumWidth = 10;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Width = 134;
+            // 
+            // startTimeDataGridViewTextBoxColumn
+            // 
+            startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
+            startTimeDataGridViewTextBoxColumn.HeaderText = "Відправлення";
+            startTimeDataGridViewTextBoxColumn.MinimumWidth = 10;
+            startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            startTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            startTimeDataGridViewTextBoxColumn.Width = 274;
+            // 
+            // BusInfo
+            // 
+            BusInfo.DataPropertyName = "BusInfo";
+            BusInfo.HeaderText = "Автобус";
+            BusInfo.MinimumWidth = 10;
+            BusInfo.Name = "BusInfo";
+            BusInfo.ReadOnly = true;
+            BusInfo.Width = 186;
+            // 
+            // ActiveDaysOfWeekString
+            // 
+            ActiveDaysOfWeekString.DataPropertyName = "ActiveDaysOfWeekString";
+            ActiveDaysOfWeekString.HeaderText = "Дні тижня";
+            ActiveDaysOfWeekString.MinimumWidth = 10;
+            ActiveDaysOfWeekString.Name = "ActiveDaysOfWeekString";
+            ActiveDaysOfWeekString.ReadOnly = true;
+            ActiveDaysOfWeekString.Width = 218;
             // 
             // routeTripBindingSource
             // 
@@ -1063,9 +1115,9 @@
             groupBox2.Controls.Add(deleteRouteStopButton);
             groupBox2.Controls.Add(editRouteStopButton);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(619, 410);
+            groupBox2.Location = new Point(591, 410);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(898, 73);
+            groupBox2.Size = new Size(926, 73);
             groupBox2.TabIndex = 25;
             groupBox2.TabStop = false;
             // 
@@ -1077,7 +1129,7 @@
             moveRouteStopToBottomButton.FlatStyle = FlatStyle.Flat;
             moveRouteStopToBottomButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             moveRouteStopToBottomButton.ForeColor = Color.White;
-            moveRouteStopToBottomButton.Location = new Point(708, 12);
+            moveRouteStopToBottomButton.Location = new Point(722, 12);
             moveRouteStopToBottomButton.Name = "moveRouteStopToBottomButton";
             moveRouteStopToBottomButton.Size = new Size(63, 48);
             moveRouteStopToBottomButton.TabIndex = 27;
@@ -1093,7 +1145,7 @@
             moveRouteStopBeforeButton.FlatStyle = FlatStyle.Flat;
             moveRouteStopBeforeButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             moveRouteStopBeforeButton.ForeColor = Color.White;
-            moveRouteStopBeforeButton.Location = new Point(639, 12);
+            moveRouteStopBeforeButton.Location = new Point(653, 12);
             moveRouteStopBeforeButton.Name = "moveRouteStopBeforeButton";
             moveRouteStopBeforeButton.Size = new Size(63, 48);
             moveRouteStopBeforeButton.TabIndex = 26;
@@ -1109,7 +1161,7 @@
             addRouteStopButton.FlatStyle = FlatStyle.Flat;
             addRouteStopButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             addRouteStopButton.ForeColor = Color.White;
-            addRouteStopButton.Location = new Point(472, 12);
+            addRouteStopButton.Location = new Point(486, 12);
             addRouteStopButton.Name = "addRouteStopButton";
             addRouteStopButton.Size = new Size(161, 48);
             addRouteStopButton.TabIndex = 25;
@@ -1125,7 +1177,7 @@
             deleteRouteStopButton.FlatStyle = FlatStyle.Flat;
             deleteRouteStopButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             deleteRouteStopButton.ForeColor = Color.White;
-            deleteRouteStopButton.Location = new Point(127, 12);
+            deleteRouteStopButton.Location = new Point(141, 12);
             deleteRouteStopButton.Name = "deleteRouteStopButton";
             deleteRouteStopButton.Size = new Size(146, 48);
             deleteRouteStopButton.TabIndex = 24;
@@ -1141,7 +1193,7 @@
             editRouteStopButton.FlatStyle = FlatStyle.Flat;
             editRouteStopButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             editRouteStopButton.ForeColor = Color.White;
-            editRouteStopButton.Location = new Point(279, 12);
+            editRouteStopButton.Location = new Point(293, 12);
             editRouteStopButton.Name = "editRouteStopButton";
             editRouteStopButton.Size = new Size(187, 48);
             editRouteStopButton.TabIndex = 23;
@@ -1179,7 +1231,7 @@
             routeStopsDataGridView.DefaultCellStyle = dataGridViewCellStyle20;
             routeStopsDataGridView.Dock = DockStyle.Fill;
             routeStopsDataGridView.GridColor = Color.FromArgb(218, 215, 205);
-            routeStopsDataGridView.Location = new Point(619, 3);
+            routeStopsDataGridView.Location = new Point(591, 3);
             routeStopsDataGridView.MultiSelect = false;
             routeStopsDataGridView.Name = "routeStopsDataGridView";
             routeStopsDataGridView.ReadOnly = true;
@@ -1199,7 +1251,7 @@
             dataGridViewCellStyle22.WrapMode = DataGridViewTriState.True;
             routeStopsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle22;
             routeStopsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            routeStopsDataGridView.Size = new Size(898, 401);
+            routeStopsDataGridView.Size = new Size(926, 401);
             routeStopsDataGridView.TabIndex = 24;
             // 
             // stopNameDataGridViewTextBoxColumn
@@ -1283,7 +1335,7 @@
             routesDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle26;
             tableLayoutPanel1.SetRowSpan(routesDataGridView, 3);
             routesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            routesDataGridView.Size = new Size(610, 887);
+            routesDataGridView.Size = new Size(582, 887);
             routesDataGridView.TabIndex = 22;
             routesDataGridView.SelectionChanged += routesDataGridView_SelectionChanged;
             // 
@@ -1317,7 +1369,7 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 896);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(610, 70);
+            groupBox1.Size = new Size(582, 70);
             groupBox1.TabIndex = 23;
             groupBox1.TabStop = false;
             // 
@@ -1329,7 +1381,7 @@
             AddRouteButton.FlatStyle = FlatStyle.Flat;
             AddRouteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddRouteButton.ForeColor = Color.White;
-            AddRouteButton.Location = new Point(397, 11);
+            AddRouteButton.Location = new Point(383, 11);
             AddRouteButton.Name = "AddRouteButton";
             AddRouteButton.Size = new Size(161, 48);
             AddRouteButton.TabIndex = 25;
@@ -1345,7 +1397,7 @@
             deleteRouteButton.FlatStyle = FlatStyle.Flat;
             deleteRouteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             deleteRouteButton.ForeColor = Color.White;
-            deleteRouteButton.Location = new Point(52, 11);
+            deleteRouteButton.Location = new Point(38, 11);
             deleteRouteButton.Name = "deleteRouteButton";
             deleteRouteButton.Size = new Size(146, 48);
             deleteRouteButton.TabIndex = 24;
@@ -1361,13 +1413,150 @@
             editRouteButton.FlatStyle = FlatStyle.Flat;
             editRouteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             editRouteButton.ForeColor = Color.White;
-            editRouteButton.Location = new Point(204, 11);
+            editRouteButton.Location = new Point(190, 11);
             editRouteButton.Name = "editRouteButton";
             editRouteButton.Size = new Size(187, 48);
             editRouteButton.TabIndex = 23;
             editRouteButton.Text = "Редагувати";
             editRouteButton.UseVisualStyleBackColor = false;
             editRouteButton.Click += editRouteButton_Click;
+            // 
+            // busesTabPage
+            // 
+            busesTabPage.BackColor = Color.FromArgb(218, 215, 205);
+            busesTabPage.Controls.Add(addBusButton);
+            busesTabPage.Controls.Add(deleteBusButton);
+            busesTabPage.Controls.Add(editBusButton);
+            busesTabPage.Controls.Add(busesDataGridView);
+            busesTabPage.Location = new Point(4, 44);
+            busesTabPage.Name = "busesTabPage";
+            busesTabPage.Padding = new Padding(3);
+            busesTabPage.Size = new Size(1526, 975);
+            busesTabPage.TabIndex = 4;
+            busesTabPage.Text = "buses";
+            // 
+            // addBusButton
+            // 
+            addBusButton.Anchor = AnchorStyles.Bottom;
+            addBusButton.BackColor = Color.FromArgb(58, 90, 64);
+            addBusButton.FlatAppearance.BorderSize = 0;
+            addBusButton.FlatStyle = FlatStyle.Flat;
+            addBusButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            addBusButton.ForeColor = Color.White;
+            addBusButton.Location = new Point(1221, 879);
+            addBusButton.Name = "addBusButton";
+            addBusButton.Size = new Size(289, 70);
+            addBusButton.TabIndex = 25;
+            addBusButton.Text = "Додати";
+            addBusButton.UseVisualStyleBackColor = false;
+            addBusButton.Click += addBusButton_Click;
+            // 
+            // deleteBusButton
+            // 
+            deleteBusButton.Anchor = AnchorStyles.Bottom;
+            deleteBusButton.BackColor = Color.FromArgb(255, 41, 46);
+            deleteBusButton.FlatAppearance.BorderSize = 0;
+            deleteBusButton.FlatStyle = FlatStyle.Flat;
+            deleteBusButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            deleteBusButton.ForeColor = Color.White;
+            deleteBusButton.Location = new Point(621, 879);
+            deleteBusButton.Name = "deleteBusButton";
+            deleteBusButton.Size = new Size(237, 70);
+            deleteBusButton.TabIndex = 24;
+            deleteBusButton.Text = "Видалити";
+            deleteBusButton.UseVisualStyleBackColor = false;
+            deleteBusButton.Click += deleteBusButton_Click;
+            // 
+            // editBusButton
+            // 
+            editBusButton.Anchor = AnchorStyles.Bottom;
+            editBusButton.BackColor = Color.FromArgb(58, 90, 64);
+            editBusButton.FlatAppearance.BorderSize = 0;
+            editBusButton.FlatStyle = FlatStyle.Flat;
+            editBusButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            editBusButton.ForeColor = Color.White;
+            editBusButton.Location = new Point(899, 879);
+            editBusButton.Name = "editBusButton";
+            editBusButton.Size = new Size(276, 70);
+            editBusButton.TabIndex = 23;
+            editBusButton.Text = "Редагувати";
+            editBusButton.UseVisualStyleBackColor = false;
+            editBusButton.Click += editBusButton_Click;
+            // 
+            // busesDataGridView
+            // 
+            busesDataGridView.AllowUserToAddRows = false;
+            busesDataGridView.AllowUserToDeleteRows = false;
+            busesDataGridView.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            busesDataGridView.AutoGenerateColumns = false;
+            busesDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            busesDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            busesDataGridView.BackgroundColor = Color.FromArgb(218, 215, 205);
+            busesDataGridView.BorderStyle = BorderStyle.None;
+            busesDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle27.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = SystemColors.Control;
+            dataGridViewCellStyle27.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle27.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = DataGridViewTriState.True;
+            busesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            busesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            busesDataGridView.Columns.AddRange(new DataGridViewColumn[] { numberDataGridViewTextBoxColumn, ModelName });
+            busesDataGridView.DataSource = busBindingSource;
+            dataGridViewCellStyle28.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = Color.White;
+            dataGridViewCellStyle28.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle28.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = DataGridViewTriState.False;
+            busesDataGridView.DefaultCellStyle = dataGridViewCellStyle28;
+            busesDataGridView.GridColor = Color.FromArgb(218, 215, 205);
+            busesDataGridView.Location = new Point(8, 29);
+            busesDataGridView.MultiSelect = false;
+            busesDataGridView.Name = "busesDataGridView";
+            busesDataGridView.ReadOnly = true;
+            dataGridViewCellStyle29.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = SystemColors.Control;
+            dataGridViewCellStyle29.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle29.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = DataGridViewTriState.True;
+            busesDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            busesDataGridView.RowHeadersWidth = 100;
+            busesDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle30.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle30.Padding = new Padding(5);
+            busesDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            busesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            busesDataGridView.Size = new Size(1511, 843);
+            busesDataGridView.TabIndex = 22;
+            // 
+            // numberDataGridViewTextBoxColumn
+            // 
+            numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
+            numberDataGridViewTextBoxColumn.HeaderText = "Номер автобуса";
+            numberDataGridViewTextBoxColumn.MinimumWidth = 10;
+            numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            numberDataGridViewTextBoxColumn.ReadOnly = true;
+            numberDataGridViewTextBoxColumn.Width = 311;
+            // 
+            // ModelName
+            // 
+            ModelName.DataPropertyName = "ModelName";
+            ModelName.HeaderText = "Модель";
+            ModelName.MinimumWidth = 10;
+            ModelName.Name = "ModelName";
+            ModelName.ReadOnly = true;
+            ModelName.Width = 185;
+            // 
+            // busBindingSource
+            // 
+            busBindingSource.DataSource = typeof(Models.Bus);
             // 
             // panel4
             // 
@@ -1415,6 +1604,7 @@
             busesMenuItem.Name = "busesMenuItem";
             busesMenuItem.Size = new Size(250, 44);
             busesMenuItem.Text = "Автобуси";
+            busesMenuItem.Click += busesMenuItem_Click;
             // 
             // routesMenuItem
             // 
@@ -1428,42 +1618,6 @@
             stopsMenuItem.Name = "stopsMenuItem";
             stopsMenuItem.Size = new Size(310, 44);
             stopsMenuItem.Text = "Зупинки";
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "Id";
-            Column1.HeaderText = "Рейс";
-            Column1.MinimumWidth = 10;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 134;
-            // 
-            // startTimeDataGridViewTextBoxColumn
-            // 
-            startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
-            startTimeDataGridViewTextBoxColumn.HeaderText = "Відправлення";
-            startTimeDataGridViewTextBoxColumn.MinimumWidth = 10;
-            startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
-            startTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            startTimeDataGridViewTextBoxColumn.Width = 274;
-            // 
-            // BusInfo
-            // 
-            BusInfo.DataPropertyName = "BusInfo";
-            BusInfo.HeaderText = "Автобус";
-            BusInfo.MinimumWidth = 10;
-            BusInfo.Name = "BusInfo";
-            BusInfo.ReadOnly = true;
-            BusInfo.Width = 186;
-            // 
-            // ActiveDaysOfWeekString
-            // 
-            ActiveDaysOfWeekString.DataPropertyName = "ActiveDaysOfWeekString";
-            ActiveDaysOfWeekString.HeaderText = "Дні тижня";
-            ActiveDaysOfWeekString.MinimumWidth = 10;
-            ActiveDaysOfWeekString.Name = "ActiveDaysOfWeekString";
-            ActiveDaysOfWeekString.ReadOnly = true;
-            ActiveDaysOfWeekString.Width = 218;
             // 
             // MainForm
             // 
@@ -1507,6 +1661,9 @@
             ((System.ComponentModel.ISupportInitialize)routesDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)routeBindingSource).EndInit();
             groupBox1.ResumeLayout(false);
+            busesTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)busesDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)busBindingSource).EndInit();
             panel4.ResumeLayout(false);
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
@@ -1570,7 +1727,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private GroupBox groupBox1;
         private DataGridView routeStopsDataGridView;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn StopName;
         private DataGridViewTextBoxColumn rideTimeFromPreviousStopDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn stayTimeDataGridViewTextBoxColumn;
@@ -1610,12 +1766,20 @@
         private DataGridViewTextBoxColumn arrivalTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private BindingSource ticketBindingSource;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private BindingSource busModelBindingSource;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn BusInfo;
         private DataGridViewTextBoxColumn ActiveDaysOfWeekString;
+        private TabPage busesTabPage;
+        private Button addBusButton;
+        private Button deleteBusButton;
+        private Button editBusButton;
+        private DataGridView busesDataGridView;
+        private BindingSource busBindingSource;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ModelName;
     }
 }

@@ -15,5 +15,14 @@ namespace BusTicketingSystem.Models
         public required string Number { get; set; }
 
         public string Info => $"{Number} ({Model.Name})";
+
+        public string ModelName => Model.Name;
+
+        public void CopyFrom(Bus other)
+        {
+            Id = other.Id;
+            Model = other.Model;
+            Number = other.Number;
+        }
     }
 }

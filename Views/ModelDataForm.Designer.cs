@@ -88,7 +88,7 @@
             nameTextBox.Font = new Font("Verdana", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 204);
             nameTextBox.ForeColor = SystemColors.WindowText;
             nameTextBox.Location = new Point(282, 25);
-            nameTextBox.MaxLength = 20;
+            nameTextBox.MaxLength = 30;
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new Size(483, 40);
             nameTextBox.TabIndex = 6;

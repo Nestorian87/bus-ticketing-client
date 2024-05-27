@@ -282,11 +282,12 @@ namespace BusTicketingSystem.Presenters
 
 
             RouteStop? selectedStop = view.SelectedRouteStop;
+            int oldCount = routeStopBindingSource.Count;
 
             ShowRoutes();
             ShowRouteStops(selectedRoute.Id);
 
-            if (selectedStop != null)
+            if (routeStopBindingSource.Count > oldCount && selectedStop != null)
             {
                 view.SetSelectedRouteStopIndex(selectedStop.Index + 1);
             }

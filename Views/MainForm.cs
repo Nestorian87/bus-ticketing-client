@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
-    public partial class MainForm : Form, IMainView, ISearchView, ITicketsView, IModelsView, IRoutesView
+    public partial class MainForm : Form, IMainView, ISearchView, ITicketsView, IModelsView, IRoutesView, IBusesView
     {
 
         private ApplicationContext context;
@@ -133,6 +133,19 @@ namespace BusTicketingSystem
             }
         }
 
+        public Bus? SelectedBus
+        {
+            get
+            {
+                var selectedRows = busesDataGridView.SelectedRows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    return null;
+                }
+                return selectedRows[0].DataBoundItem as Bus;
+            }
+        }
+
         public event EventHandler? LogoutClicked;
         public event EventHandler? TripsSearchClicked;
         public event EventHandler? BuyTicketClicked;
@@ -157,6 +170,10 @@ namespace BusTicketingSystem
         public event EventHandler? DeleteRouteTripClicked;
         public event EventHandler? RoutesClicked;
         public event EventHandler? RouteSelectionChanged;
+        public event EventHandler? AddBusClicked;
+        public event EventHandler? EditBusClicked;
+        public event EventHandler? DeleteBusClicked;
+        public event EventHandler? BusesClicked;
 
         public void SetTripBindingSource(BindingSource source)
         {
@@ -186,6 +203,10 @@ namespace BusTicketingSystem
         void IRoutesView.ShowView() => tabControl.SelectedTab = routesTabPage;
 
         void IRoutesView.CloseView() { }
+
+        void IBusesView.ShowView() => tabControl.SelectedTab = busesTabPage;
+
+        void IBusesView.CloseView() { }
 
         private void buyButton_Click(object sender, EventArgs e)
         {
@@ -417,6 +438,31 @@ namespace BusTicketingSystem
         private void deleteTripButton_Click(object sender, EventArgs e)
         {
             DeleteRouteTripClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void SetBusBindingSource(BindingSource source)
+        {
+            busBindingSource.DataSource = source;
+        }
+
+        private void addBusButton_Click(object sender, EventArgs e)
+        {
+            AddBusClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void editBusButton_Click(object sender, EventArgs e)
+        {
+            EditBusClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void deleteBusButton_Click(object sender, EventArgs e)
+        {
+            DeleteBusClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void busesMenuItem_Click(object sender, EventArgs e)
+        {
+            BusesClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

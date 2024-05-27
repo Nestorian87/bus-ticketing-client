@@ -89,7 +89,8 @@ namespace BusTicketingSystem.Presenters
             {
                 return;
             }
-            if (!view.ShowConfirmation($"Ви точно хочете видалити модель \"{selectedModel.Name}\"?"))
+            if (!view.ShowConfirmation($"Ви точно хочете видалити модель \"{selectedModel.Name}\"? " +
+                $"Також будуть видалені усі автобуси цієї моделі"))
             {
                 return;
             }
@@ -141,6 +142,15 @@ namespace BusTicketingSystem.Presenters
                 busRepository.AreBusesWithModelOnRoute(editedModel.Id))
             {
                 dataView.ShowError("Неможливо зменшити кількість місць у моделі, автобуси якої знаходяться на маршруті");
+                return false;
+            }
+
+            if (busRepository
+                .GetAllModels()
+                .Any(m => string.Equals(m.Name, dataView.ModelName, StringComparison.OrdinalIgnoreCase) &&
+                    (editedModel == null || m.Id != view.SelectedModel!.Id)))
+            {
+                dataView.ShowError("Така модель вже існує");
                 return false;
             }
 
