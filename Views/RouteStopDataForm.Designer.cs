@@ -60,7 +60,7 @@
             cancelButton.Location = new Point(339, 381);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(200, 57);
-            cancelButton.TabIndex = 13;
+            cancelButton.TabIndex = 5;
             cancelButton.Text = "Скасувати";
             cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
@@ -77,7 +77,7 @@
             saveButton.Location = new Point(562, 381);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(200, 57);
-            saveButton.TabIndex = 12;
+            saveButton.TabIndex = 6;
             saveButton.Text = "Зберегти";
             saveButton.UseVisualStyleBackColor = false;
             saveButton.Click += saveButton_Click;
@@ -108,7 +108,7 @@
             stopComboBox.Location = new Point(279, 62);
             stopComboBox.Name = "stopComboBox";
             stopComboBox.Size = new Size(380, 40);
-            stopComboBox.TabIndex = 16;
+            stopComboBox.TabIndex = 1;
             stopComboBox.ValueMember = "Id";
             // 
             // stopDataBindingSource
@@ -138,7 +138,7 @@
             rideTimeHoursNumericUpDown.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
             rideTimeHoursNumericUpDown.Name = "rideTimeHoursNumericUpDown";
             rideTimeHoursNumericUpDown.Size = new Size(380, 40);
-            rideTimeHoursNumericUpDown.TabIndex = 18;
+            rideTimeHoursNumericUpDown.TabIndex = 2;
             // 
             // label2
             // 
@@ -178,7 +178,7 @@
             rideTimeMinutesNumericUpDown.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
             rideTimeMinutesNumericUpDown.Name = "rideTimeMinutesNumericUpDown";
             rideTimeMinutesNumericUpDown.Size = new Size(380, 40);
-            rideTimeMinutesNumericUpDown.TabIndex = 20;
+            rideTimeMinutesNumericUpDown.TabIndex = 3;
             // 
             // label5
             // 
@@ -203,7 +203,7 @@
             stopMinutesNumericUpDown.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
             stopMinutesNumericUpDown.Name = "stopMinutesNumericUpDown";
             stopMinutesNumericUpDown.Size = new Size(380, 40);
-            stopMinutesNumericUpDown.TabIndex = 23;
+            stopMinutesNumericUpDown.TabIndex = 4;
             // 
             // label6
             // 

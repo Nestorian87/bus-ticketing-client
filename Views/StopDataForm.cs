@@ -10,21 +10,23 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem.Views
 {
-    public partial class RouteDataForm : Form, IRouteDataView
+    public partial class StopDataForm : Form, IStopDataView
     {
-
-        public string Title { set => titleTextBox.Text = value; }
-        public int? Price {
-            get => string.IsNullOrEmpty(priceNumericUpDown.Text) ?
-                    null : (int) priceNumericUpDown.Value;
-            set => priceNumericUpDown.Text = value?.ToString() ?? "";
+        public string Address { 
+            get => addressTextBox.Text.Trim(); 
+            set => addressTextBox.Text = value;
+        }
+        public string StopName { 
+            get => nameTextBox.Text.Trim();
+            set => nameTextBox.Text = value;
         }
 
-        public event EventHandler? SaveClicked;
-        public RouteDataForm()
+        public StopDataForm()
         {
             InitializeComponent();
         }
+
+        public event EventHandler? SaveClicked;
 
         public void CloseView() => Close();
 

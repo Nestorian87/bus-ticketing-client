@@ -14,23 +14,27 @@ namespace BusTicketingSystem.Views
     public partial class RouteStopDataForm : Form, IRouteStopDataView
     {
 
-        public Stop? Stop {
+        public Stop? Stop
+        {
             get => stopComboBox.SelectedItem as Stop;
             set => stopComboBox.SelectedItem = value;
         }
-        public int? RideHoursFromPreviousStop {
+        public int? RideHoursFromPreviousStop
+        {
             get => string.IsNullOrEmpty(rideTimeHoursNumericUpDown.Text) ?
-                   null : (int) rideTimeHoursNumericUpDown.Value;
+                   null : (int)rideTimeHoursNumericUpDown.Value;
             set => rideTimeHoursNumericUpDown.Text = value?.ToString() ?? "";
         }
-        public int? RideMinutesFromPreviousStop {
+        public int? RideMinutesFromPreviousStop
+        {
             get => string.IsNullOrEmpty(rideTimeMinutesNumericUpDown.Text) ?
-                   null : (int) rideTimeMinutesNumericUpDown.Value;
+                   null : (int)rideTimeMinutesNumericUpDown.Value;
             set => rideTimeMinutesNumericUpDown.Text = value?.ToString() ?? "";
         }
-        public int? StopTimeMinutes {
+        public int? StopTimeMinutes
+        {
             get => string.IsNullOrEmpty(stopMinutesNumericUpDown.Text) ?
-                   null : (int) stopMinutesNumericUpDown.Value;
+                   null : (int)stopMinutesNumericUpDown.Value;
             set => stopMinutesNumericUpDown.Text = value?.ToString() ?? "";
         }
 

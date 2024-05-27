@@ -6,7 +6,15 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
-    public partial class MainForm : Form, IMainView, ISearchView, ITicketsView, IModelsView, IRoutesView, IBusesView
+    public partial class MainForm : 
+        Form,
+        IMainView, 
+        ISearchView, 
+        ITicketsView, 
+        IModelsView, 
+        IRoutesView, 
+        IBusesView, 
+        IStopsView
     {
 
         private ApplicationContext context;
@@ -146,6 +154,19 @@ namespace BusTicketingSystem
             }
         }
 
+        public Stop? SelectedStop
+        {
+            get
+            {
+                var selectedRows = stopsDataGridView.SelectedRows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    return null;
+                }
+                return selectedRows[0].DataBoundItem as Stop;
+            }
+        }
+
         public event EventHandler? LogoutClicked;
         public event EventHandler? TripsSearchClicked;
         public event EventHandler? BuyTicketClicked;
@@ -174,6 +195,10 @@ namespace BusTicketingSystem
         public event EventHandler? EditBusClicked;
         public event EventHandler? DeleteBusClicked;
         public event EventHandler? BusesClicked;
+        public event EventHandler? AddStopClicked;
+        public event EventHandler? EditStopClicked;
+        public event EventHandler? DeleteStopClicked;
+        public event EventHandler? StopsClicked;
 
         public void SetTripBindingSource(BindingSource source)
         {
@@ -189,24 +214,22 @@ namespace BusTicketingSystem
         }
 
         void ISearchView.ShowView() => tabControl.SelectedTab = searchTabPage;
-
         void ISearchView.CloseView() { }
 
         void ITicketsView.ShowView() => tabControl.SelectedTab = myTicketsTabPage;
-
         void ITicketsView.CloseView() { }
 
         void IModelsView.ShowView() => tabControl.SelectedTab = modelsTabPage;
-
         void IModelsView.CloseView() { }
 
         void IRoutesView.ShowView() => tabControl.SelectedTab = routesTabPage;
-
         void IRoutesView.CloseView() { }
 
         void IBusesView.ShowView() => tabControl.SelectedTab = busesTabPage;
-
         void IBusesView.CloseView() { }
+
+        void IStopsView.ShowView() => tabControl.SelectedTab = stopsTabPage;
+        void IStopsView.CloseView() { }
 
         private void buyButton_Click(object sender, EventArgs e)
         {
@@ -231,15 +254,6 @@ namespace BusTicketingSystem
         private void logoutButton_Click(object sender, EventArgs e)
         {
             LogoutClicked?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void ñomboBox_Enter(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            if (!comboBox.DroppedDown)
-            {
-                comboBox.DroppedDown = true;
-            }
         }
 
         public void ShowView()
@@ -463,6 +477,31 @@ namespace BusTicketingSystem
         private void busesMenuItem_Click(object sender, EventArgs e)
         {
             BusesClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void stopsMenuItem_Click(object sender, EventArgs e)
+        {
+            StopsClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void addStopButton_Click(object sender, EventArgs e)
+        {
+            AddStopClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void editStopButton_Click(object sender, EventArgs e)
+        {
+            EditStopClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void deleteStopButton_Click(object sender, EventArgs e)
+        {
+            DeleteStopClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void SetStopBindingSource(BindingSource source)
+        {
+            stopBindingSource.DataSource = source;
         }
     }
 }

@@ -18,5 +18,11 @@ namespace BusTicketingSystem.Models
 
         public Stop Copy => new() { Id = Id, Name = Name, Address = Address };
 
+        public void CopyFrom(Stop other)
+        {
+            Id = other.Id;
+            Name = other.Name;
+            Address = other.Address;
+        }
     }
 }

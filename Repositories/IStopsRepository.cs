@@ -10,5 +10,9 @@ namespace BusTicketingSystem.Repositories
     public interface IStopsRepository
     {
         List<Stop> GetAllStops();
+        void AddStop(Stop stop);
+        void DeleteStop(int stopId);
+        void UpdateStop(Stop stop);
+        bool IsStopUsedOnRoutes(int stopId);
     }
 }

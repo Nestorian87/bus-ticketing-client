@@ -72,6 +72,9 @@ namespace BusTicketingSystem
                     services.AddTransient<BusesPresenter>();
                     services.AddTransient<IBusesView>(s => s.GetRequiredService<MainForm>());
                     services.AddTransient<IBusDataView, BusDataForm>();
+                    services.AddTransient<StopsPresenter>();
+                    services.AddTransient<IStopsView>(s => s.GetRequiredService<MainForm>());
+                    services.AddTransient<IStopDataView, StopDataForm>();
 
                 });
         }

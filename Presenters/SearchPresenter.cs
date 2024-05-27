@@ -30,12 +30,11 @@ namespace BusTicketingSystem.Presenters
             view.SearchDate = view.MinSearchDate = DateTime.Now;
             view.TripsSearchClicked += (_, _) => Search(false);
             view.BuyTicketClicked += (_, _) => BuyTicket();
-
-            LoadStops();
         }
 
         public void Run()
         {
+            LoadStops();
             view.ShowView();
         }
 

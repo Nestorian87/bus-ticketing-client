@@ -27,7 +27,8 @@ namespace BusTicketingSystem.Presenters
             TicketsPresenter ticketsPresenter,
             ModelsPresenter modelsPresenter,
             RoutesPresenter routesPresenter,
-            BusesPresenter busesPresenter)
+            BusesPresenter busesPresenter,
+            StopsPresenter stopsPresenter)
         {
             this.view = view;
             this.userRepository = userRepository;
@@ -40,6 +41,7 @@ namespace BusTicketingSystem.Presenters
             view.ModelsClicked += (_, _) => modelsPresenter.Run();
             view.RoutesClicked += (_, _) => routesPresenter.Run();
             view.BusesClicked += (_, _) => busesPresenter.Run();
+            view.StopsClicked += (_, _) => stopsPresenter.Run();
         }
 
         public void Run()

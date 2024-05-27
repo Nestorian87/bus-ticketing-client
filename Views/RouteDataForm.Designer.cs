@@ -47,7 +47,7 @@
             priceNumericUpDown.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             priceNumericUpDown.Name = "priceNumericUpDown";
             priceNumericUpDown.Size = new Size(483, 40);
-            priceNumericUpDown.TabIndex = 18;
+            priceNumericUpDown.TabIndex = 2;
             // 
             // cancelButton
             // 
@@ -61,7 +61,7 @@
             cancelButton.Location = new Point(335, 190);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(200, 57);
-            cancelButton.TabIndex = 17;
+            cancelButton.TabIndex = 3;
             cancelButton.Text = "Скасувати";
             cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
@@ -78,7 +78,7 @@
             saveButton.Location = new Point(555, 190);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(200, 57);
-            saveButton.TabIndex = 16;
+            saveButton.TabIndex = 4;
             saveButton.Text = "Зберегти";
             saveButton.UseVisualStyleBackColor = false;
             saveButton.Click += saveButton_Click;
@@ -121,7 +121,7 @@
             titleTextBox.MaxLength = 20;
             titleTextBox.Name = "titleTextBox";
             titleTextBox.Size = new Size(483, 40);
-            titleTextBox.TabIndex = 13;
+            titleTextBox.TabIndex = 1;
             titleTextBox.WordWrap = false;
             // 
             // RouteDataForm

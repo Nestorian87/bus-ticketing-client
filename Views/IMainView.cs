@@ -11,6 +11,7 @@ namespace BusTicketingSystem.View
         public event EventHandler ModelsClicked;
         public event EventHandler RoutesClicked;
         public event EventHandler BusesClicked;
+        public event EventHandler StopsClicked;
 
         new void ShowView();
         new void CloseView();

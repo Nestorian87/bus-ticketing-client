@@ -59,6 +59,10 @@
             DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle33 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle34 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             panel1 = new Panel();
             label1 = new Label();
@@ -149,6 +153,14 @@
             numberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ModelName = new DataGridViewTextBoxColumn();
             busBindingSource = new BindingSource(components);
+            stopsTabPage = new TabPage();
+            addStopButton = new Button();
+            deleteStopButton = new Button();
+            editStopButton = new Button();
+            stopsDataGridView = new DataGridView();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            addressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stopBindingSource = new BindingSource(components);
             panel4 = new Panel();
             menuStrip = new MenuStrip();
             адмінітраторToolStripMenuItem = new ToolStripMenuItem();
@@ -186,6 +198,9 @@
             busesTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)busesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).BeginInit();
+            stopsTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)stopsDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)stopBindingSource).BeginInit();
             panel4.SuspendLayout();
             menuStrip.SuspendLayout();
             SuspendLayout();
@@ -302,7 +317,6 @@
             fromComboBox.Size = new Size(310, 53);
             fromComboBox.TabIndex = 1;
             fromComboBox.ValueMember = "Id";
-            fromComboBox.Enter += сomboBox_Enter;
             // 
             // searchPanel
             // 
@@ -552,7 +566,6 @@
             toComboBox.Size = new Size(310, 53);
             toComboBox.TabIndex = 10;
             toComboBox.ValueMember = "Id";
-            toComboBox.Enter += сomboBox_Enter;
             // 
             // label4
             // 
@@ -597,6 +610,7 @@
             tabControl.Controls.Add(modelsTabPage);
             tabControl.Controls.Add(routesTabPage);
             tabControl.Controls.Add(busesTabPage);
+            tabControl.Controls.Add(stopsTabPage);
             tabControl.Location = new Point(400, -10);
             tabControl.Margin = new Padding(0);
             tabControl.Name = "tabControl";
@@ -1558,6 +1572,143 @@
             // 
             busBindingSource.DataSource = typeof(Models.Bus);
             // 
+            // stopsTabPage
+            // 
+            stopsTabPage.BackColor = Color.FromArgb(218, 215, 205);
+            stopsTabPage.Controls.Add(addStopButton);
+            stopsTabPage.Controls.Add(deleteStopButton);
+            stopsTabPage.Controls.Add(editStopButton);
+            stopsTabPage.Controls.Add(stopsDataGridView);
+            stopsTabPage.Location = new Point(4, 44);
+            stopsTabPage.Name = "stopsTabPage";
+            stopsTabPage.Padding = new Padding(3);
+            stopsTabPage.Size = new Size(1526, 975);
+            stopsTabPage.TabIndex = 5;
+            stopsTabPage.Text = "stops";
+            // 
+            // addStopButton
+            // 
+            addStopButton.Anchor = AnchorStyles.Bottom;
+            addStopButton.BackColor = Color.FromArgb(58, 90, 64);
+            addStopButton.FlatAppearance.BorderSize = 0;
+            addStopButton.FlatStyle = FlatStyle.Flat;
+            addStopButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            addStopButton.ForeColor = Color.White;
+            addStopButton.Location = new Point(1221, 877);
+            addStopButton.Name = "addStopButton";
+            addStopButton.Size = new Size(289, 70);
+            addStopButton.TabIndex = 29;
+            addStopButton.Text = "Додати";
+            addStopButton.UseVisualStyleBackColor = false;
+            addStopButton.Click += addStopButton_Click;
+            // 
+            // deleteStopButton
+            // 
+            deleteStopButton.Anchor = AnchorStyles.Bottom;
+            deleteStopButton.BackColor = Color.FromArgb(255, 41, 46);
+            deleteStopButton.FlatAppearance.BorderSize = 0;
+            deleteStopButton.FlatStyle = FlatStyle.Flat;
+            deleteStopButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            deleteStopButton.ForeColor = Color.White;
+            deleteStopButton.Location = new Point(621, 877);
+            deleteStopButton.Name = "deleteStopButton";
+            deleteStopButton.Size = new Size(237, 70);
+            deleteStopButton.TabIndex = 28;
+            deleteStopButton.Text = "Видалити";
+            deleteStopButton.UseVisualStyleBackColor = false;
+            deleteStopButton.Click += deleteStopButton_Click;
+            // 
+            // editStopButton
+            // 
+            editStopButton.Anchor = AnchorStyles.Bottom;
+            editStopButton.BackColor = Color.FromArgb(58, 90, 64);
+            editStopButton.FlatAppearance.BorderSize = 0;
+            editStopButton.FlatStyle = FlatStyle.Flat;
+            editStopButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            editStopButton.ForeColor = Color.White;
+            editStopButton.Location = new Point(899, 877);
+            editStopButton.Name = "editStopButton";
+            editStopButton.Size = new Size(276, 70);
+            editStopButton.TabIndex = 27;
+            editStopButton.Text = "Редагувати";
+            editStopButton.UseVisualStyleBackColor = false;
+            editStopButton.Click += editStopButton_Click;
+            // 
+            // stopsDataGridView
+            // 
+            stopsDataGridView.AllowUserToAddRows = false;
+            stopsDataGridView.AllowUserToDeleteRows = false;
+            stopsDataGridView.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            stopsDataGridView.AutoGenerateColumns = false;
+            stopsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            stopsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            stopsDataGridView.BackgroundColor = Color.FromArgb(218, 215, 205);
+            stopsDataGridView.BorderStyle = BorderStyle.None;
+            stopsDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle31.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = SystemColors.Control;
+            dataGridViewCellStyle31.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle31.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = DataGridViewTriState.True;
+            stopsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            stopsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            stopsDataGridView.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn });
+            stopsDataGridView.DataSource = stopBindingSource;
+            dataGridViewCellStyle32.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = Color.White;
+            dataGridViewCellStyle32.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle32.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle32.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = DataGridViewTriState.False;
+            stopsDataGridView.DefaultCellStyle = dataGridViewCellStyle32;
+            stopsDataGridView.GridColor = Color.FromArgb(218, 215, 205);
+            stopsDataGridView.Location = new Point(8, 27);
+            stopsDataGridView.MultiSelect = false;
+            stopsDataGridView.Name = "stopsDataGridView";
+            stopsDataGridView.ReadOnly = true;
+            dataGridViewCellStyle33.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = SystemColors.Control;
+            dataGridViewCellStyle33.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle33.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = DataGridViewTriState.True;
+            stopsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            stopsDataGridView.RowHeadersWidth = 100;
+            stopsDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle34.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle34.Padding = new Padding(5);
+            stopsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle34;
+            stopsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            stopsDataGridView.Size = new Size(1511, 843);
+            stopsDataGridView.TabIndex = 26;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Зупинка";
+            nameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
+            nameDataGridViewTextBoxColumn.Width = 190;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            addressDataGridViewTextBoxColumn.HeaderText = "Адреса";
+            addressDataGridViewTextBoxColumn.MinimumWidth = 10;
+            addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            addressDataGridViewTextBoxColumn.ReadOnly = true;
+            addressDataGridViewTextBoxColumn.Width = 174;
+            // 
+            // stopBindingSource
+            // 
+            stopBindingSource.DataSource = typeof(Models.Stop);
+            // 
             // panel4
             // 
             panel4.Controls.Add(tabControl);
@@ -1618,6 +1769,7 @@
             stopsMenuItem.Name = "stopsMenuItem";
             stopsMenuItem.Size = new Size(310, 44);
             stopsMenuItem.Text = "Зупинки";
+            stopsMenuItem.Click += stopsMenuItem_Click;
             // 
             // MainForm
             // 
@@ -1664,6 +1816,9 @@
             busesTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)busesDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)busBindingSource).EndInit();
+            stopsTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)stopsDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)stopBindingSource).EndInit();
             panel4.ResumeLayout(false);
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
@@ -1716,7 +1871,6 @@
         private Button deleteModelButton;
         private Button editModelButton;
         private DataGridView modelsDataGridView;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn seatsCountDataGridViewTextBoxColumn;
         private Button addModelButton;
         private TabPage routesTabPage;
@@ -1781,5 +1935,13 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ModelName;
+        private TabPage stopsTabPage;
+        private Button addStopButton;
+        private Button deleteStopButton;
+        private Button editStopButton;
+        private DataGridView stopsDataGridView;
+        private BindingSource stopBindingSource;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
     }
 }

@@ -81,7 +81,7 @@
             busComboBox.Location = new Point(285, 74);
             busComboBox.Name = "busComboBox";
             busComboBox.Size = new Size(483, 40);
-            busComboBox.TabIndex = 28;
+            busComboBox.TabIndex = 1;
             busComboBox.ValueMember = "Id";
             // 
             // tripBusBindingSource
@@ -113,7 +113,7 @@
             cancelButton.Location = new Point(345, 608);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(200, 57);
-            cancelButton.TabIndex = 26;
+            cancelButton.TabIndex = 4;
             cancelButton.Text = "Скасувати";
             cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
@@ -130,7 +130,7 @@
             saveButton.Location = new Point(568, 608);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(200, 57);
-            saveButton.TabIndex = 25;
+            saveButton.TabIndex = 5;
             saveButton.Text = "Зберегти";
             saveButton.UseVisualStyleBackColor = false;
             saveButton.Click += saveButton_Click;
@@ -146,7 +146,7 @@
             startTimePicker.Name = "startTimePicker";
             startTimePicker.ShowUpDown = true;
             startTimePicker.Size = new Size(483, 40);
-            startTimePicker.TabIndex = 37;
+            startTimePicker.TabIndex = 2;
             // 
             // daysOfWeekCheckedListBox
             // 
@@ -159,7 +159,7 @@
             daysOfWeekCheckedListBox.Location = new Point(285, 246);
             daysOfWeekCheckedListBox.Name = "daysOfWeekCheckedListBox";
             daysOfWeekCheckedListBox.Size = new Size(483, 333);
-            daysOfWeekCheckedListBox.TabIndex = 38;
+            daysOfWeekCheckedListBox.TabIndex = 3;
             // 
             // RouteTripDataForm
             // 
