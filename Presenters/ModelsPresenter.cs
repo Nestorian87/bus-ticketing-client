@@ -93,7 +93,7 @@ namespace BusTicketingSystem.Presenters
             {
                 return;
             }
-            if (busRepository.IsBusesWithModelOnRoute(selectedModel.Id))
+            if (busRepository.AreBusesWithModelOnRoute(selectedModel.Id))
             {
                 dataView.ShowError("Неможливо видалити модель, автобуси якої знаходяться на маршруті");
                 return;
@@ -138,7 +138,7 @@ namespace BusTicketingSystem.Presenters
 
             if (editedModel != null && 
                 editedModel.SeatsCount > dataView.SeatsCount &&
-                busRepository.IsBusesWithModelOnRoute(editedModel.Id))
+                busRepository.AreBusesWithModelOnRoute(editedModel.Id))
             {
                 dataView.ShowError("Неможливо зменшити кількість місць у моделі, автобуси якої знаходяться на маршруті");
                 return false;

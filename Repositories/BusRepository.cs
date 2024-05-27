@@ -39,9 +39,14 @@ namespace BusTicketingSystem.Repositories
             dbContext.SaveChanges();
         }
 
-        public bool IsBusesWithModelOnRoute(int modelId)
+        public bool AreBusesWithModelOnRoute(int modelId)
         {
             return dbContext.Trips.Any(t => t.Bus.Model.Id == modelId);
+        }
+
+        public List<Bus> GetAllBuses()
+        {
+            return dbContext.Buses.ToList();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,10 @@ namespace BusTicketingSystem.Models
         public required List<DayOfWeek> ActiveDaysOfWeek { get; set; }
 
         [NotMapped]
-        public required Stop StartStop { get; set; }
+        public Stop StartStop { get; set; } = null!;
 
         [NotMapped]
-        public required Stop EndStop { get; set; }
+        public Stop EndStop { get; set; } = null!;
 
         public required List<Ticket> BoughtTickets { get; set; }
 
@@ -45,5 +46,30 @@ namespace BusTicketingSystem.Models
         public TimeSpan RideTime => Route.CalculateRideTime(StartStop, EndStop);
 
         public double Price => Route.CalculatePrice(StartStop, EndStop);
+
+        public string BusInfo => $"{Bus.Number}\n({Bus.Model.Name})";
+
+        public string ActiveDaysOfWeekString
+        {
+            get
+            {
+                var cultureInfo = new CultureInfo("uk-UA");
+                var dateTimeFormat = cultureInfo.DateTimeFormat;
+
+                return string.Join(", ", ActiveDaysOfWeek.Select(dateTimeFormat.GetAbbreviatedDayName));
+            }
+        }
+
+        public void CopyFrom(Trip other)
+        {
+            Id = other.Id;
+            Route = other.Route;
+            Bus = other.Bus;
+            StartTime = other.StartTime;
+            ActiveDaysOfWeek = other.ActiveDaysOfWeek;
+            StartStop = other.StartStop;
+            EndStop = other.EndStop;
+            BoughtTickets = other.BoughtTickets;
+        }
     }
 }

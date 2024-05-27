@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace BusTicketingSystem.Views
 {
-    public interface IModelDataView : IDataView
+    public interface IRouteDataView : IDataView
     {
 
-        string ModelName { get; set; }
-        int? SeatsCount { get; set; }
-
+        string Title { set; }
+        int? Price { get; set; }
     }
 }

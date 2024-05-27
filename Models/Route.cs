@@ -15,13 +15,13 @@ namespace BusTicketingSystem.Models
         private List<RouteStop> _stops = null!;
 
         public required List<RouteStop> Stops {
-            get => _stops;
-            set => _stops = value.OrderBy(s => s.Index).ToList();
+            get => _stops.OrderBy(s => s.Index).ToList();
+            set => _stops = value;
         }
 
         public List<Trip> Trips { get; set; } = null!;
 
-        public string Name => $"{Stops.First().Stop.Name} – {Stops.Last().Stop.Name}";
+        public string Name => Stops.Count < 2 ? "Пустий маршрут" : $"{Stops.First().Stop.Name} – {Stops.Last().Stop.Name}";
 
         public TimeSpan CalculateRideTime(Stop endStop)
         {

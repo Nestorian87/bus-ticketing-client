@@ -11,5 +11,11 @@ namespace BusTicketingSystem.Repositories
     {
 
         List<Trip> Find(Stop fromStop, Stop toStop, DateTime date);
+        List<Trip> GetByRouteId(int routeId);
+        bool IsTripWithActiveTickets(int tripId);
+        void AddTrip(Trip trip);
+        void DeleteTrip(int tripId);
+        void UpdateTrip(Trip trip);
+
     }
 }

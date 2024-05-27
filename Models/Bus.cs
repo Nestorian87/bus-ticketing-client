@@ -13,5 +13,7 @@ namespace BusTicketingSystem.Models
         public required BusModel Model { get; set; }
 
         public required string Number { get; set; }
+
+        public string Info => $"{Number} ({Model.Name})";
     }
 }

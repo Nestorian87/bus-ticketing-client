@@ -14,6 +14,7 @@ namespace BusTicketingSystem.Repositories
         void AddModel(BusModel model);
         void UpdateModel(BusModel model);
         void DeleteModel(int modelId);
-        bool IsBusesWithModelOnRoute(int modelId);
+        bool AreBusesWithModelOnRoute(int modelId);
+        List<Bus> GetAllBuses();
     }
 }

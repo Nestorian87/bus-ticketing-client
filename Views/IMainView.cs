@@ -9,6 +9,7 @@ namespace BusTicketingSystem.View
         public event EventHandler SearchTripsClicked;
         public event EventHandler MyTicketsClicked;
         public event EventHandler ModelsClicked;
+        public event EventHandler RoutesClicked;
 
         new void ShowView();
         new void CloseView();

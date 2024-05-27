@@ -13,6 +13,23 @@ namespace BusTicketingSystem.Repositories
 {
     public class TripRepository(DatabaseContext dbContext) : ITripRepository
     {
+        public void AddTrip(Trip trip)
+        {
+            dbContext.Trips.Add(trip);
+            dbContext.SaveChanges();
+        }
+
+        public void DeleteTrip(int tripId)
+        {
+            Trip? trip = GetTrip(tripId);
+            if (trip == null)
+            {
+                return;
+            }
+            dbContext.Trips.Remove(trip);
+            dbContext.SaveChanges();
+        }
+
         public List<Trip> Find(Stop fromStop, Stop toStop, DateTime date)
         {
             return dbContext.Routes
@@ -48,6 +65,34 @@ namespace BusTicketingSystem.Repositories
                 .Where(t => date != DateTime.Today || t.StartStopDepartureTime > TimeOnly.FromDateTime(DateTime.Now))
                 .OrderBy(t => t.StartStopDepartureTime)
                 .ToList();
+        }
+
+        public List<Trip> GetByRouteId(int routeId)
+        {
+            return dbContext
+                .Routes
+                .Where(r => r.Id == routeId)
+                .SelectMany(r => r.Trips)
+                .Include(t => t.Bus).ThenInclude(b => b.Model)
+                .ToList();
+        }
+
+        public bool IsTripWithActiveTickets(int tripId)
+        {
+            return dbContext.Tickets
+                 .Where(t => t.Date >= DateOnly.FromDateTime(DateTime.Now) && t.Trip.Id == tripId)
+                 .Any();
+        }
+
+        public void UpdateTrip(Trip trip)
+        {
+            GetTrip(trip.Id)?.CopyFrom(trip);
+            dbContext.SaveChanges();
+        }
+
+        private Trip? GetTrip(int tripId)
+        {
+            return dbContext.Trips.Find(tripId);
         }
     }
 }

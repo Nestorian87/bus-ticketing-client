@@ -49,6 +49,7 @@ namespace BusTicketingSystem
                     services.AddTransient<ITripRepository, TripRepository>();
                     services.AddTransient<ITicketRepository, TicketRepository>();
                     services.AddTransient<IBusRepository, BusRepository>();
+                    services.AddTransient<IRouteRepository, RouteRepisitory>();
                     services.AddTransient<LoginPresenter>();
                     services.AddTransient<RegistrationPresenter>();
                     services.AddTransient<ILoginView, LoginForm>();
@@ -63,6 +64,11 @@ namespace BusTicketingSystem
                     services.AddTransient<IModelsView>(s => s.GetRequiredService<MainForm>());
                     services.AddTransient<IModelDataView, ModelDataForm>();
                     services.AddTransient<ModelsPresenter>();
+                    services.AddTransient<IRoutesView>(s => s.GetRequiredService<MainForm>());
+                    services.AddTransient<RoutesPresenter>();
+                    services.AddTransient<IRouteDataView, RouteDataForm>();
+                    services.AddTransient<IRouteStopDataView, RouteStopDataForm>();
+                    services.AddTransient<IRouteTripDataView, RouteTripDataForm>();
 
                 });
         }

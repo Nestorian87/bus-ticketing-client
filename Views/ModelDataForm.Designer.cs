@@ -73,7 +73,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label3.ForeColor = Color.FromArgb(52, 78, 65);
-            label3.Location = new Point(176, 33);
+            label3.Location = new Point(176, 25);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
             label3.Size = new Size(103, 35);
