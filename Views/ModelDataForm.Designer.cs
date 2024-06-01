@@ -47,9 +47,10 @@
             saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 204);
             saveButton.ForeColor = Color.White;
-            saveButton.Location = new Point(565, 199);
+            saveButton.Location = new Point(348, 124);
+            saveButton.Margin = new Padding(2, 2, 2, 2);
             saveButton.Name = "saveButton";
-            saveButton.Size = new Size(200, 57);
+            saveButton.Size = new Size(123, 36);
             saveButton.TabIndex = 4;
             saveButton.Text = "Зберегти";
             saveButton.UseVisualStyleBackColor = false;
@@ -61,10 +62,10 @@
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label4.ForeColor = Color.FromArgb(52, 78, 65);
-            label4.Location = new Point(38, 92);
+            label4.Location = new Point(10, 58);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
-            label4.Size = new Size(241, 35);
+            label4.Size = new Size(159, 23);
             label4.TabIndex = 9;
             label4.Text = "Кількість місць";
             // 
@@ -74,10 +75,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label3.ForeColor = Color.FromArgb(52, 78, 65);
-            label3.Location = new Point(176, 25);
+            label3.Location = new Point(102, 16);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new Size(103, 35);
+            label3.Size = new Size(67, 23);
             label3.TabIndex = 7;
             label3.Text = "Назва";
             // 
@@ -88,10 +89,11 @@
             nameTextBox.BorderStyle = BorderStyle.FixedSingle;
             nameTextBox.Font = new Font("Verdana", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 204);
             nameTextBox.ForeColor = SystemColors.WindowText;
-            nameTextBox.Location = new Point(282, 25);
+            nameTextBox.Location = new Point(174, 16);
+            nameTextBox.Margin = new Padding(2, 2, 2, 2);
             nameTextBox.MaxLength = 30;
             nameTextBox.Name = "nameTextBox";
-            nameTextBox.Size = new Size(483, 40);
+            nameTextBox.Size = new Size(298, 28);
             nameTextBox.TabIndex = 1;
             nameTextBox.WordWrap = false;
             // 
@@ -104,9 +106,10 @@
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 204);
             cancelButton.ForeColor = Color.White;
-            cancelButton.Location = new Point(345, 199);
+            cancelButton.Location = new Point(212, 124);
+            cancelButton.Margin = new Padding(2, 2, 2, 2);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(200, 57);
+            cancelButton.Size = new Size(123, 36);
             cancelButton.TabIndex = 3;
             cancelButton.Text = "Скасувати";
             cancelButton.UseVisualStyleBackColor = false;
@@ -118,20 +121,21 @@
             seatsCountNumericUpDown.BackColor = Color.FromArgb(218, 215, 205);
             seatsCountNumericUpDown.BorderStyle = BorderStyle.FixedSingle;
             seatsCountNumericUpDown.Font = new Font("Verdana", 10.125F);
-            seatsCountNumericUpDown.Location = new Point(282, 92);
+            seatsCountNumericUpDown.Location = new Point(174, 58);
+            seatsCountNumericUpDown.Margin = new Padding(2, 2, 2, 2);
             seatsCountNumericUpDown.Maximum = new decimal(new int[] { 300, 0, 0, 0 });
             seatsCountNumericUpDown.Name = "seatsCountNumericUpDown";
-            seatsCountNumericUpDown.Size = new Size(483, 40);
+            seatsCountNumericUpDown.Size = new Size(297, 28);
             seatsCountNumericUpDown.TabIndex = 2;
             // 
             // ModelDataForm
             // 
             AcceptButton = saveButton;
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
             CancelButton = cancelButton;
-            ClientSize = new Size(800, 277);
+            ClientSize = new Size(497, 188);
             Controls.Add(seatsCountNumericUpDown);
             Controls.Add(cancelButton);
             Controls.Add(saveButton);
@@ -139,7 +143,8 @@
             Controls.Add(label3);
             Controls.Add(nameTextBox);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(826, 348);
+            Margin = new Padding(2, 2, 2, 2);
+            MinimumSize = new Size(515, 235);
             Name = "ModelDataForm";
             Text = "Модель";
             ((System.ComponentModel.ISupportInitialize)seatsCountNumericUpDown).EndInit();

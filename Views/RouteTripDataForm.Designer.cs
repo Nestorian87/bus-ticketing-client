@@ -48,10 +48,10 @@
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label5.ForeColor = Color.FromArgb(52, 78, 65);
-            label5.Location = new Point(98, 246);
+            label5.Location = new Point(60, 154);
             label5.Margin = new Padding(0);
             label5.Name = "label5";
-            label5.Size = new Size(165, 35);
+            label5.Size = new Size(108, 23);
             label5.TabIndex = 34;
             label5.Text = "Дні тижня";
             // 
@@ -61,10 +61,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label1.ForeColor = Color.FromArgb(52, 78, 65);
-            label1.Location = new Point(2, 162);
+            label1.Location = new Point(1, 101);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new Size(280, 35);
+            label1.Size = new Size(185, 23);
             label1.TabIndex = 29;
             label1.Text = "Час відправлення";
             label1.TextAlign = ContentAlignment.MiddleRight;
@@ -79,9 +79,10 @@
             busComboBox.DisplayMember = "Info";
             busComboBox.Font = new Font("Verdana", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 204);
             busComboBox.FormattingEnabled = true;
-            busComboBox.Location = new Point(285, 74);
+            busComboBox.Location = new Point(188, 46);
+            busComboBox.Margin = new Padding(2);
             busComboBox.Name = "busComboBox";
-            busComboBox.Size = new Size(483, 40);
+            busComboBox.Size = new Size(286, 28);
             busComboBox.TabIndex = 1;
             busComboBox.ValueMember = "Id";
             // 
@@ -95,10 +96,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 204);
             label3.ForeColor = Color.FromArgb(52, 78, 65);
-            label3.Location = new Point(129, 75);
+            label3.Location = new Point(79, 47);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new Size(134, 35);
+            label3.Size = new Size(88, 23);
             label3.TabIndex = 27;
             label3.Text = "Автобус";
             // 
@@ -111,9 +112,10 @@
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 204);
             cancelButton.ForeColor = Color.White;
-            cancelButton.Location = new Point(345, 608);
+            cancelButton.Location = new Point(212, 380);
+            cancelButton.Margin = new Padding(2);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(200, 57);
+            cancelButton.Size = new Size(123, 36);
             cancelButton.TabIndex = 4;
             cancelButton.Text = "Скасувати";
             cancelButton.UseVisualStyleBackColor = false;
@@ -128,9 +130,10 @@
             saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.Font = new Font("Segoe UI", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 204);
             saveButton.ForeColor = Color.White;
-            saveButton.Location = new Point(568, 608);
+            saveButton.Location = new Point(350, 380);
+            saveButton.Margin = new Padding(2);
             saveButton.Name = "saveButton";
-            saveButton.Size = new Size(200, 57);
+            saveButton.Size = new Size(123, 36);
             saveButton.TabIndex = 5;
             saveButton.Text = "Зберегти";
             saveButton.UseVisualStyleBackColor = false;
@@ -143,10 +146,11 @@
             startTimePicker.CustomFormat = "HH:mm";
             startTimePicker.Font = new Font("Verdana", 10F);
             startTimePicker.Format = DateTimePickerFormat.Custom;
-            startTimePicker.Location = new Point(285, 162);
+            startTimePicker.Location = new Point(188, 101);
+            startTimePicker.Margin = new Padding(2);
             startTimePicker.Name = "startTimePicker";
             startTimePicker.ShowUpDown = true;
-            startTimePicker.Size = new Size(483, 40);
+            startTimePicker.Size = new Size(286, 28);
             startTimePicker.TabIndex = 2;
             // 
             // daysOfWeekCheckedListBox
@@ -157,19 +161,20 @@
             daysOfWeekCheckedListBox.CheckOnClick = true;
             daysOfWeekCheckedListBox.Font = new Font("Verdana", 10F);
             daysOfWeekCheckedListBox.FormattingEnabled = true;
-            daysOfWeekCheckedListBox.Location = new Point(285, 246);
+            daysOfWeekCheckedListBox.Location = new Point(188, 154);
+            daysOfWeekCheckedListBox.Margin = new Padding(2);
             daysOfWeekCheckedListBox.Name = "daysOfWeekCheckedListBox";
-            daysOfWeekCheckedListBox.Size = new Size(483, 333);
+            daysOfWeekCheckedListBox.Size = new Size(285, 207);
             daysOfWeekCheckedListBox.TabIndex = 3;
             // 
             // RouteTripDataForm
             // 
             AcceptButton = saveButton;
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(218, 215, 205);
             CancelButton = cancelButton;
-            ClientSize = new Size(800, 702);
+            ClientSize = new Size(497, 454);
             Controls.Add(daysOfWeekCheckedListBox);
             Controls.Add(startTimePicker);
             Controls.Add(label5);
@@ -179,7 +184,8 @@
             Controls.Add(cancelButton);
             Controls.Add(saveButton);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(826, 773);
+            Margin = new Padding(2);
+            MinimumSize = new Size(515, 501);
             Name = "RouteTripDataForm";
             Text = "Рейс";
             ((System.ComponentModel.ISupportInitialize)tripBusBindingSource).EndInit();
