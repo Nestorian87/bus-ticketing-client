@@ -6,14 +6,14 @@ using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
-    public partial class MainForm : 
+    public partial class MainForm :
         Form,
-        IMainView, 
-        ISearchView, 
-        ITicketsView, 
-        IModelsView, 
-        IRoutesView, 
-        IBusesView, 
+        IMainView,
+        ISearchView,
+        ITicketsView,
+        IModelsView,
+        IRoutesView,
+        IBusesView,
         IStopsView
     {
 
