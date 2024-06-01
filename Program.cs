@@ -8,6 +8,7 @@ using BusTicketingSystem.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
 
 namespace BusTicketingSystem
 {
@@ -24,6 +25,7 @@ namespace BusTicketingSystem
         [STAThread]
         static void Main()
         {
+            SetupCulture();
             ApplicationConfiguration.Initialize();
 
             var host = CreateHostBuilder().Build();
@@ -34,6 +36,13 @@ namespace BusTicketingSystem
 
             var mainPresenter = ServiceProvider.GetRequiredService<MainPresenter>();
             mainPresenter.Run();
+        }
+
+        private static void SetupCulture()
+        {
+            CultureInfo culture = new CultureInfo("uk-UA");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
         }
 
         private static IHostBuilder CreateHostBuilder()
