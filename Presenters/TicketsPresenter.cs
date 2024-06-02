@@ -37,7 +37,9 @@ namespace BusTicketingSystem.Presenters
 
         private void ShowTickets()
         {
-            ticketBindingSource.DataSource = ticketRepository.GetActiveTickets();
+            List<Ticket> tickets = ticketRepository.GetActiveTickets();
+            ticketBindingSource.DataSource = tickets;
+            view.IsNoBoughtTicketsTextVisible = tickets.Count == 0;
         }
 
         private void ReturnTicket()

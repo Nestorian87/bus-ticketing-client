@@ -10,6 +10,7 @@ namespace BusTicketingSystem.Views
     public interface ITicketsView : IView
     {
         Ticket? SelectedTicket { get; }
+        bool IsNoBoughtTicketsTextVisible { set; }
 
         event EventHandler SaveTicketClicked;
         event EventHandler ReturnTicketClicked;

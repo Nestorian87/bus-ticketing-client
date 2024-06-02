@@ -76,6 +76,9 @@ namespace BusTicketingSystem
 
         public bool IsTripsNotFoundTextVisible { set => tripsNotFoundLabel.Visible = value; }
 
+        public bool IsNoBoughtTicketsTextVisible { set => noBoughtTicketsLabel.Visible = value; }
+
+
         public Ticket? SelectedTicket
         {
             get
